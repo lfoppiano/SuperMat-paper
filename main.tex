@@ -4,217 +4,224 @@
 \usepackage{tabularx}
 \usepackage{url}
 
-\title{SuperMat: superconductors related information}
+\title{SuperMat: Construction of a linked annotated dataset from superconductors-related literature}
+% \title{SuperMat: Construction of a linked annotated dataset for superconductors material discovery}
+% \title{SuperMat: Construction of a linked annotated dataset to support superconductors material research}
 
-%\author[1]{Luca Foppiano\thanks{FOPPIANO.Luca@nims.go.jp}}
-%\author[1]{Sae Dieb\thanks{DIEB.Sae@nims.go.jp}}
-%\author[1]{Akira Suzuki\thanks{SUZUKI.Akira3@nims.go.jp}}
-%\author[1]{Masashi Ishii\thanks{ISHII.Masashi@nims.go.jp}}
-%\affil[1]{Research and Services Division of Materials Data and Integrated System (MaDIS), National Institute for Materials Science (NIMS), 1-2-1 Sengen, Tsukuba, Ibaraki 305-0047, Japan}
+\author[1]{Luca Foppiano\thanks{FOPPIANO.Luca@nims.go.jp}}
+\author[1]{Sae Dieb}
+\author[1]{Akira Suzuki}
+\author[2]{Pedro Baptista de Castro}
+\author[2]{Suguru Iwasaki}
+\author[2]{Yan Meng}
+\author[2]{Terashima Kensei}
+\author[2]{Yoshihiko Takano}
+\author[1]{Masashi Ishii\thanks{ISHII.Masashi@nims.go.jp}}
 
-\author{Authors}
-% \date{April 2019}
+\affil[1]{Material Database Group, MaDIS, NIMS, Japan}
+\affil[2]{Nano Frontier Superconducting Materials Group, MANA, NIMS}
 
 \begin{document}
 
 \maketitle
 
+\begin{abstract}
+%The creation of large collaborative projects such as the Materials Genome Initiative~\cite{material_genome_initiative}, contributed to accelerate the change, however the amount of structured data represent a negligible part of the potentially available information.
+
+%At the moment, the only available database for superconducting material discovery is Supercon, which is old, small (only 30000 entries) and outdated. There is needs of modernising or rebuilding the current manual process, which cannot keep-up with the current publication rate. 
+% We are currently working on a collaborative project to implement a system for mining information from superconductors-related literature using different approaches of machine learning and rule-based. 
+
+% We annotated entities such as materials, classes, measurement methods, and properties such as superconducting critical temperature values and expressions, and critical pressure. We linked materials with critical temperature, pressures, and measurement methods. 
+
+
+% importance of text and data mining in material research (max 2 sentences) 
+In materials science, abundant publications are available as knowledge source. However, information provided as text in a non-standardised and unstructured form, is difficult to be used as machines readable media.
+Text and data mining (TDM) can provide the missing building block to obtain large structured data to accelerate the research in data-driven exploration~\cite{Hill2016MaterialsSW}.
+% Importance of superconducting material research 
+Although superconductors discussed in this work are already used as components of quantum computer, medical instruments, electric power transmission, among others, the research to discover higher temperature superconductors is still active. 
+[TODO add example of superconductors research]
+TDM for extracting structured data indicating relations between samples, properties, and conditions is playing an important role in data-driven research to support breakthrough in the high temperature superconductor discovery.
+% other attempts 
+However, only few attempts of TDM from materials science literature have been described by \cite{Dieb2011ConstructionOT}, \cite{court2018auto} and \cite{kononova_text-mined_2019}. 
+We propose SuperMat (Superconductor Materials), a linked dataset of annotated data from scientific literature, as a result of a collaborative project between computers and materials scientists.  
+Our work was articulated on several tasks: (1) selection of relevant information to be collected, (2) design of relation tag-set, (3) annotation rules, and (4) validation of domain experts.
+The dataset, composed by 114 articles and 9966 entities, contains annotations of materials, samples, classes, properties, and conditions. 
+We provide links of superconducting critical temperature (\textit{Tc}) with parametric conditions such as pressure values, and the used methods of measurements, when specified.
+% Usage
+This dataset can be applied to training supervised models or for end to end evaluation, regardless the approach. 
+On a broader scope, it can be utilised for document summarisation, clustering or information retrieval. 
+    
+\end{abstract}
+
+\newpage
+
 \section{Background and summary}
 % Introduction, why text is important for scientific knowledge? 
-Nowadays, the vast majority of scientific knowledge is published as text with a publication rate increasing every year at an overwhelming pace~\cite{Youtie2008NanotechnologyPA} \cite{Grigas2017JustGI} \cite{Khabsa2014TheNO} \cite{OrduaMalea2015MethodsFE} \cite{Bjrk2009ScientificJP}.
+Nowadays, the vast majority of scientific knowledge is published as text, with publication rate increasing every year at an overwhelming pace~\cite{Youtie2008NanotechnologyPA} \cite{Grigas2017JustGI} \cite{Khabsa2014TheNO} \cite{OrduaMalea2015MethodsFE} \cite{Bjrk2009ScientificJP}.
 This phenomenon has given rise to numerous initiatives that focus on automatic document processing for accessing relevant information such as document synthesis, entities extraction or clustering. 
 
 In materials science, the data-driven approach to material discovery has been facing several challenges~\cite{Hill2016MaterialsSW}. 
 Nevertheless, it has become increasingly popular in the last decades thanks to huge collaborative projects such as the Genome Initiative~\cite{material_genome_initiative} \cite{Jain2013CommentaryTM_materialsProject} and the general availability of tools and computing power. 
-However, the availability of large-volume domain-specific databases has become a crucial step to provide scientific data to create solid bases for further data-driven exploration. 
-Most of the largely used material databases, such as Supercon~\cite{SuperCon}, Polynfo~\cite{polynfo}, the Pauling File~\cite{Blokhin2018ThePF_paulingFile}, have been manually constructed and curated over decades. Manual curation, in many sub-domain, is the safest approach to ensure the creation of high-quality data, however this process is becoming both technically and economically unsustainable. 
-
-[END]
-% -- 
-
-Data-driven science has become as the fourth dimension in scientific exploration, after experimentation, theory and simulation~\cite{doi:10.1063/1.4944682}.
-
-
-The emergence of Machine Learning (ML), a sub-field of Artificial Intelligence (AI), followed by a growing infrastructure of tools for generating, testing, and refining scientific models give us some hope. Such approach allow to address complex problems which conventional techniques cannot solve efficiently. 
-
-% Introduce the importance of high-quality training data 
-On the other hand the development of statistical models require a solid base where to build more complex systems. Low quality or incorrect data, will propagate and exponentially impact on the out result. One of the dogma of text processing is "Garbage in, Garbage out", therefore is foremost important to reduce at minimum the "Garbage in" by having high quality data. 
-
-
-
+Scientific publications contains an enormous amount of information about materials, experiments and properties, however, presented in a unstructured and arbitrary form which makes complex its use in data-driven research. 
 % Dieb: Why collecting information from text is useful for material science? 
-In Materials science, the amount of structured and organised data represents a negligible part of the total amount of the available published knowledge. Most the enormous amount of data generated in research and experiments is not published or shared. 
+However, the availability of large domain-specific databases has become a required step to create solid bases for data-driven exploration. 
+Beside all the effort, the amount of structured and organised data still represents a negligible part of the total amount of the available published knowledge.
+Most of the largely used material databases, such as Supercon~\cite{SuperCon}, Polynfo~\cite{polynfo}, the Pauling File~\cite{Blokhin2018ThePF_paulingFile}, have been manually constructed and curated over decades. Manual curation, in many sub-domain, is the safest approach to ensure the creation of high-quality data and this process is becoming both technically and economically unsustainable. 
 
 
-% to be rephrased
-%Contrary to what might seem like the conventional machine learning mantra, throwing more data at the problem is not always the solution. Instead, the quality and domain-specificity of the corpus determine its effectiveness for domain-specific tasks.
+% Superconductors domain
+%   - concrete example of superconducting case -> which properties or information can be useful for superconducting material scientists? [Suzuki/Terashima/Pedro]
+
+High-temperature superconductors have many promising applications, however, to discover a new superconductor is very difficult, it is said that only 3\% of candidate materials is actually a superconductor~\cite{Konno2018DeepLO}.
+Supercon has been created to support this research using data-driven approach, although the effort to manually create the database, the 30000 entries are a small number as compared with the totally published information.
+
+An automatic system is therefore necessary to be developed. 
+%[TODO: introduce the use of Matchine Learning]
+We decided to utilise an approach based on Machine Learning and supervised learning. Such solution provides higher tolerance to noise and faster generalisation capabilities than classical rule-based approaches.
 
 
-Scientific publications contains an enormous amount of information about materials, however, presented in a unstructured and arbitrary form which makes complex its use in data-driven research. 
-
-%   concrete example of superconducting case -> which properties or information can be useful for superconducting material scientists? [Suzuki/Terashima/Pedro]
-
-% Revert this upside-down: 
-%   - needs of information in superconductors (example above)
+%   - needs of information in superconductors
 %   - the available databases are a) old, b) small, c) manually constructed -> outdated
 %   - automatic extraction is required 
 % Dieb: Why the construction of the corpus is useful? 
 %   - what is the related work? mention other corpora 
 %   - need of training data for creating the model / system 
 
-% In the field of superconductors materials, the manual data collection used to populate SuperCon\footnote{\url{http://supercon.nims.go.jp}} cannot cope with the massive fresh information from the increasing number of articles published every year. In addition, the current process cannot easily scale infinitely, for physical and economical constraints. Therefore, an automatic system to smooth out the process, is necessary to be developed. 
 
+In this unexplored terrain, there is no record of previous attempts in the scientific literature, nor existing datasets in the public domain. 
+
+In this submission, we present, in collaboration with the Nano Frontier Superconducting Material Group, our work and methodology for constructing a corpus for superconductor material data: SuperMat (Superconductors Materials). At the time of writing this paper, we have annotated X articles. 
+
+In Section \ref{sec:method} we describe how the corpus was collected and annotated.
+
+The paper is structured as follows: first we discuss the methodology used to obtain the data and produce the final result. Then we discuss the information and the validation of the data contained in the dataset. Finally, we provide example of applications, usability and availability information. 
+
+% [END]
+% -- 
+
+% [OLD] Data-driven science has become as the fourth dimension in scientific exploration, after experimentation, theory and simulation~\cite{doi:10.1063/1.4944682}.
+
+
+% [OLD] The emergence of Machine Learning (ML), a sub-field of Artificial Intelligence (AI), followed by a growing infrastructure of tools for generating, testing, and refining scientific models give us some hope. Such approach allow to address complex problems which conventional techniques cannot solve efficiently. 
+
+% Introduce the importance of high-quality training data 
+% [OLD] On the other hand the development of statistical models require a solid base where to build more complex systems. Low quality or incorrect data, will propagate and exponentially impact on the out result. One of the dogma of text processing is "Garbage in, Garbage out", therefore is foremost important to reduce at minimum the "Garbage in" by having high quality data. 
+
+
+% to be rephrased
+%Contrary to what might seem like the conventional machine learning mantra, throwing more data at the problem is not always the solution. Instead, the quality and domain-specificity of the corpus determine its effectiveness for domain-specific tasks.
+
+% In the field of superconductors materials, the manual data collection used to populate SuperCon\footnote{\url{http://supercon.nims.go.jp}} cannot cope with the massive fresh information from the increasing number of articles published every year. In addition, the current process cannot easily scale infinitely, for physical and economical constraints. 
 %- 
-High-temperature superconductors have many promising applications: quantum computers, high-performance classical computers, green energy, safe and high-speed transportation system, medical appliance, and etc. However, to discover a new superconductor is very difficult, only 3\% of candidate materials is actually a superconductor [CITE]. 
+
 %-
 
 % A project is currently ongoing, and aims to develop a system for automatic superconductors database creation. From large quantities of superconductors{-}related articles, it aims to extract, automatically, superconductors material and their relative properties~\footcite{foppiano2019proposal}. 
 
+% The dataset provides scientific text annotated with entities and relationship information (links). The entities are identified among 6 classes (or labels) as summarised in Figure~\ref{fig:classes_frequency} and linked using relationships \texttt{material-tc} and \texttt{tc-pressure} (Table~~\ref{tbl:summary-links}). 
 
-Unfortunately, in this unexplored terrain, there is no record of previous attempts in the scientific literature, nor existing datasets in the public domain. 
+% This corpus is designed for training sequence labelling statistical models and can be utilised for developing domain-specific systems for entity extraction, entity-relationship and clustering. 
 
-In this submission, we present, in collaboration with the Nano Frontier Superconducting Material Group, our work and methodology for constructing a corpus for superconductor material data: SuperMat (Superconductors Materials). At the time of writing this paper, we have annotated 119 articles. 
-
-The dataset provides scientific text annotated with entities and relationship information (links). The entities are identified among 6 classes (or labels) as summarised in Figure~\ref{fig:classes_frequency} and linked using relationships \texttt{material-tc} and \texttt{tc-pressure} (Table~~\ref{tbl:summary-links}). 
-
-This corpus is designed for training sequence labelling statistical models and can be utilised for developing domain-specific systems for entity extraction, entity-relationship and clustering. 
-
+\label{sec:method}
 \section{Method}
 \subsection{Content acquisition}
-The raw data is composed of scientific papers collected from three different sources. The (a) Open Access version of articles referenced in SuperCon records, (b) articles provided from domain-experts and (c) articles obtained by search, using keywords such as 'superconductor', 'critical temperature' and 'superconductivity', in the arXiv's “Condensed matter” category\footnote{\url{https://arxiv.org/archive/cond-mat}}.
+Our content is composed by scientific articles. We collected the content from several sources. (a) the Open Access version of articles referenced in the SuperCon database records. (b) Articles of interests according with domain-experts research topics. (c) Articles from the arXiv's “Condensed matter” category\footnote{\url{https://arxiv.org/archive/cond-mat}} obtained, by searching with keywords such as 'superconductor', 'critical temperature' and 'superconductivity'.
 
-\subsection{Tagset design}
-In collaboration with superconductor domain experts, we discussed the relevant information and how they were used in research activities.
-As a result, Table \ref{table:summary-entities-superconductor} provides a summarised description of the relevant entities for domain experts.
+The corpus was collected in batches, which are simpler to manage, with the growing dimension. 
+
+\subsection{Tag-set design}
+The tag-set represent the labels and relative information that we want to capture. We discussed with domain-experts, the end clients of our system, what are the relevant information and entities they are interested in, in order of importance. We wanted to find the optimal trade-off that could keep the system simpler, yet providing all main needed information for domain experts. 
+
+As a result, we compiled a summary table (Table \ref{table:summary-entities-superconductor}) of relevant entities, in order of importance for domain experts [TODO: waiting for an prioritised version of this table from Takano Gr. ].
 
 \begin{table}[h!]
     \centering
-    \begin{tabular}{ | m{5em} | m{8cm}| } 
+    \begin{tabular}{ | m{5em} | m{8cm}| m{5em} | } 
     \hline
-        Name & Description  \\ [0.5ex] 
+        Name & Description & type \\ [0.5ex] 
     \hline\hline
-        T\textsubscript{c} & Critical Temperature\\ 
+        T\textsubscript{c} & Superconducting critical Temperature & result\\ 
     \hline
-        T\textsubscript{onset}, T\textsubscript{offset} & Temperature where the resistance tend to zero (offset) to when is really zero (onset)\\ 
+        T\textsubscript{onset} & Temperature at which the electrical resistance starts to decrease sharply & result\\
+    \hline 
+        T\textsubscript{offset} & Temperature at which zero resistance starts to appear & result\\ 
     \hline
-        H\textsubscript{c1} & Lower Critical field\\ 
+        P & Superconducting critical pressure & condition\\
     \hline
-        H\textsubscript{c2} & Higher Critical field\\ 
+        Material & Material composing the sample & sample \\
+    \hline  
+        Substrate & Material layers composing the sample & sample\\
     \hline
-        I\textsubscript{c} & Critical current\\
+        Crystal structure space group & Crystal configuration (single crystal, poly-crystal) & sample \\
+    \hline 
+        Preparation shape & wire, powder, crystal, thin film & sample\\
+    \hline 
+        Measurement method & Method used for measuring the superconducting critical temperature (theoretical/calculation, electrical resistivity, magnetic susceptibility and specific heat) & measurement\\
     \hline
-        J\textsubscript{c} & Critical current density\\ 
+        H\textsubscript{c1} & Lower Critical field & condition\\ 
     \hline
-        H\textsubscript{ivr} & Irreversibly field\\
+        H\textsubscript{c2} & Higher Critical field & condition\\ 
     \hline
-        Crystal structure space group & (TBD) \\
+        I\textsubscript{c} & Critical current & condition\\
     \hline
-        Sample preparation shape & single crystal, poly crystal, thin film or wire. \\
+        J\textsubscript{c} & Critical current density & condition\\ 
+    \hline
+        H\textsubscript{ivr} & Irreversibly field & condition\\
+    \hline    
+        Fabrication process & process used to fabricate the sample & sample\\
     \hline    
     \end{tabular}
     \caption{Summary of the relevant entities in superconductor research papers}
     \label{table:summary-entities-superconductor}
 \end{table}
 
-Depending on the writing style, these information are often presented as tables and plots because they summarise more effectively giving quicker understanding to a human reader. One plot or table can recap several experiments together without in the same space. 
-We focus on extracting information from text, with the idea that complementary information can be added on a second stage. 
+We decided to focus on extracting information from text as this first initial stage. Table or plot extraction can be run as separate parallel projects.  
 
 \subsection{Annotation process}
 \label{sec:annotation-process}
-% In this section we are discussing the process of annotation, in particular: 
-%   1. how did we find the right balance of annotation, 
-%   2. results in term of IAA
+We describe the annotation process as a variation of the MATTER approach: Model, Annotate, Train, Test, Evaluate, and Revise, which was initially described by [ADD CITATION]. 
 
-%After creating the logical model, selecting which relevant information to collect and subsequently define the labels (or tag-set), we established the annotations guidelines and the correction / cross-validation process. 
-% In this article we explore the details of our corpus and the method and approach used for its construction. 
+Our system uses already established open-source libraries which are providing already several functionalities which can simplifying our workflow. Our workflow consists in the following steps: Pre-annotate, Correct annotation, Validate, Train/Test/Evaluate, Revise. 
 
-In Text and Data Mining (TDM), the employment of Machine Learning is currently providing better accuracy and precision, more tolerance to noise and flexibility in recognising entities that have never been seen before. These advantages are not coming for free, because in supervised learning, the system requires a certain amount of examples for training, test and validation. 
+We are under the assumption of having a system implementing some sort of recognition (a machine learning model trained with one document or a rule-based approach) to bootstrap the process. 
 
-% The process of annotation of new training data is very expensive: 
-% \begin{enumerate}
-%     \item greedy in term of time and resources
-%     \item the system might require a lot of data before showing performance accuracy improvements
-%     \item is a tedious and frustrating for annotators (usually domain experts,  feeling overly-skilled, thus less motivated)
-%     \item throughput and precision are inversely proportional
-% \end{enumerate}
+The data is pre-annotated, then annotators can correct these annotations. Once a document is completed, it is validated by domain experts, which are checking the document again. This process brings two benefits: reduce distraction errors, and validate the annotation from the domain point of view. 
+[TODO: add schema summarising this process]
 
-In interdisciplinary projects, the process of annotation is always a collaborative work between ML engineers and domain experts. While the former are responsible to deal with the practical complexity of the problem, the latter steer over the content importance and the features requirements. 
+The pre-annotation 
 
-After the initial introduction with the domain experts, we, the ML engineers and data scientists, have spent time exploring the domain and attempting to define an annotation schema based on our understanding together with the knowledge of the technologies in our hands. We striven to reach a common understanding and "internally" agreed among us, before requesting the validation from the domain experts. 
-In this way we a) asses our knowledge of the domain, b) increase the probabilities to spot problems related to the data by working with it in early stages, c) develop a proactive thinking of possible shortcut or additional constraints and, last but not least, we are ready to justify any additional constraints or decision to domain experts. 
-
-% This section should describe how we are doing and which problems we are facing
-We have selected two Open Access papers deposited on Arxiv (Creative Commons) and distributed among us (3 people). We have then pre-annotated them using the current prototype and corrected using 4 labels: <supercon>, <tc>, <propertyValue> and <substitution> to identify respectively superconductor materials, critical temperature expression, values and variables substitution combination. 
-
-We have performed 3 iterative cycles of annotations, at the end of which, after calculating our Inter Annotation Agreement (IAA) we reviewed thoughtfully while updating the annotation guidelines, a "living" document describing how annotate each labels.
-
-In Table \ref{table:summary-iaa} we summarise the IAA in these iterations. Looking at these data, we can see that <substitution> was the more unclear label, as had very low agreement until the 3rd iteration. This is due to the fact that it was appearing in many different form. On the other hand any mention of critical temperature (label <tc>) was more clear (reach 85\% agreement at iteration 2). 
-
-\begin{table}[h!]
-    \centering
-    \begin{tabular}{ | c | c| c| } 
-    \hline
-        Iteration \# & IAA & IAA by label  \\ [0.5ex] 
-    \hline\hline
-        1  & 0.45
-        &\begin{tabular}{  c | c  } 
-            supercon & 0.45\\ 
-            tc & 0.56\\
-            propertyValue & 0.50\\
-            substitution & 0.21\\
-        \end{tabular}    
-        \\ 
-    \hline
-        2 & 0.65
-        &\begin{tabular}{  c |  c  } 
-            supercon & 0.75\\ 
-            tc & 0.85\\
-            propertyValue & 0.85\\
-            substitution & 0.39 \\
-        \end{tabular}          
-        \\ 
-    \hline
-        3 & 0.89
-        & \begin{tabular}{  c | c  } 
-            supercon & 0.89\\ 
-            tc & 0.91\\
-            propertyValue & 0.88\\
-            substitution & 0.94\\
-        \end{tabular}       
-        
-        \\ 
-    \hline
-    \end{tabular}
-    \caption{Summary of the IAA for each of the three cycles of annotation. Together with the average annotation agreement, we publish the agreement by label.}
-    \label{table:summary-iaa}
-\end{table}
+The correction
 
 
 \section{Data Record}
-% Description of the analysis of the dataset 
+Description of the analysis of the dataset 
 
 \section{Applications}
+How the corpus can be used
 
 \section{Technical Validation} 
-% Write about the results of the comparison between 
-% - CS vs DE 
-% - MS vs DE
-% - Kubokawa-san? 
+Write about the results of the comparison between 
+- CS vs DE 
+- MS vs DE
+- Kubokawa-san / Meng-san vs DE? 
 
 \section{Data Usage} 
-% Describe how the data is provided XML, JSON... 
+Describe how the data is provided XML, JSON... 
 
 \section{Code Availability}
-% where, how the data will be distributed 
+where, how the data will be distributed 
+
+Github? MDR, Nomad? 
+
 
 \section{Conclusion}
-% Conclusions and future work 
+Conclusions and future work 
 
 % IAA
-We have analysed the process and the evolution of the agreement during our process and how this can be used to understand when certain constraints or definition are to be clarified further. 
+% We have analysed the process and the evolution of the agreement during our process and how this can be used to understand when certain constraints or definition are to be clarified further. 
 On the creation of annotation we should improve the process of creating training data, especially when the domain expert will be actively involved in task. 
 
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \bibliography{references}  
 
 \end{document}
