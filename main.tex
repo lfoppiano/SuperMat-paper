@@ -36,7 +36,7 @@
 
 % importance of text and data mining in material research (max 2 sentences) 
 In materials science, abundant publications are available as knowledge source. However, information provided as text in a non-standardised and unstructured form, is difficult to be used as machines readable media.
-Text and data mining (TDM) can provide the missing building block to obtain large structured data to accelerate the research in data-driven exploration~\cite{Hill2016MaterialsSW}.
+The establishment of Text and data mining (TDM) processes is the missing building block to obtain big structured data, needed to accelerate the research through data-driven exploration~\cite{Hill2016MaterialsSW}.
 % Importance of superconducting material research 
 Although superconductors discussed in this work are already used as components of quantum computer, medical instruments, electric power transmission, among others, the research to discover higher temperature superconductors is still active. 
 [TODO add example of superconductors research]
@@ -44,12 +44,12 @@ TDM for extracting structured data indicating relations between samples, propert
 % other attempts 
 However, only few attempts of TDM from materials science literature have been described by \cite{Dieb2011ConstructionOT}, \cite{court2018auto} and \cite{kononova_text-mined_2019}. 
 We propose SuperMat (Superconductor Materials), a linked dataset of annotated data from scientific literature, as a result of a collaborative project between computers and materials scientists.  
-Our work was articulated on several tasks: (1) selection of relevant information to be collected, (2) design of relation tag-set, (3) annotation rules, and (4) validation of domain experts.
+Our work counts several tasks: (1) relevant information selection, (2) tag-set and relationship design, (3) annotation rules defintion, and (4) validation by domain experts.
 The dataset, composed by 114 articles and 9966 entities, contains annotations of materials, samples, classes, properties, and conditions. 
 We provide links of superconducting critical temperature (\textit{Tc}) with parametric conditions such as pressure values, and the used methods of measurements, when specified.
 % Usage
-This dataset can be applied to training supervised models or for end to end evaluation, regardless the approach. 
-On a broader scope, it can be utilised for document summarisation, clustering or information retrieval. 
+This dataset can be applied to train supervised models or for end to end evaluation, regardless the approach. 
+On a broader scope, it can be utilised for document summarisation, clustering or information retrieval.  [TODO: Rephrase]
     
 \end{abstract}
 
@@ -57,44 +57,44 @@ On a broader scope, it can be utilised for document summarisation, clustering or
 
 \section{Background and summary}
 % Introduction, why text is important for scientific knowledge? 
-Nowadays, the vast majority of scientific knowledge is published as text, with publication rate increasing every year at an overwhelming pace~\cite{Youtie2008NanotechnologyPA} \cite{Grigas2017JustGI} \cite{Khabsa2014TheNO} \cite{OrduaMalea2015MethodsFE} \cite{Bjrk2009ScientificJP}.
-This phenomenon has given rise to numerous initiatives that focus on automatic document processing for accessing relevant information such as document synthesis, entities extraction or clustering. 
+The vast majority of scientific knowledge is available as text,  publication rate increasing every year at an overwhelming pace~\cite{Grigas2017JustGI} \cite{Khabsa2014TheNO} \cite{OrduaMalea2015MethodsFE} \cite{Bjrk2009ScientificJP}.  In some highly productive fields, e.g. nanotechnologies, the number of published papers doubles every year~\cite{Youtie2008NanotechnologyPA}. 
 
-In materials science, the data-driven approach to material discovery has been facing several challenges~\cite{Hill2016MaterialsSW}. 
-Nevertheless, it has become increasingly popular in the last decades thanks to huge collaborative projects such as the Genome Initiative~\cite{material_genome_initiative} \cite{Jain2013CommentaryTM_materialsProject} and the general availability of tools and computing power. 
-Scientific publications contains an enormous amount of information about materials, experiments and properties, however, presented in a unstructured and arbitrary form which makes complex its use in data-driven research. 
+Publications, however, are presented in an non-standardised and unstructured form, difficult to be used as machine readable media. 
+
+Numerous initiatives focusing on automatic document processing, through Text and Data Mining (TDM) processed  have been established,  document processing for obtain specific  information such as document synthesis, entities extraction or clustering. 
+
+[TODO: rewrite]
+
+
+about materials, experiments and properties, 
+
+In materials science, the  data-driven approach applied to material discovery has been facing several challenges~\cite{Hill2016MaterialsSW}. 
+Nevertheless, it has become increasingly popular in the last decades thanks to large collaborative projects such as the Genome Initiative~\cite{material_genome_initiative} \cite{Jain2013CommentaryTM_materialsProject}, and the general availability of tools and computing power. 
 % Dieb: Why collecting information from text is useful for material science? 
 However, the availability of large domain-specific databases has become a required step to create solid bases for data-driven exploration. 
 Beside all the effort, the amount of structured and organised data still represents a negligible part of the total amount of the available published knowledge.
 Most of the largely used material databases, such as Supercon~\cite{SuperCon}, Polynfo~\cite{polynfo}, the Pauling File~\cite{Blokhin2018ThePF_paulingFile}, have been manually constructed and curated over decades. Manual curation, in many sub-domain, is the safest approach to ensure the creation of high-quality data and this process is becoming both technically and economically unsustainable. 
-
+[TODO: rewrite]
 
 % Superconductors domain
 %   - concrete example of superconducting case -> which properties or information can be useful for superconducting material scientists? [Suzuki/Terashima/Pedro]
 
 High-temperature superconductors have many promising applications, however, to discover a new superconductor is very difficult, it is said that only 3\% of candidate materials is actually a superconductor~\cite{Konno2018DeepLO}.
-Supercon has been created to support this research using data-driven approach, although the effort to manually create the database, the 30000 entries are a small number as compared with the totally published information.
-
+Supercon has been created to support this research using data-driven approach, although the effort to manually create the database, the 30000 entries are a small number as compared with the totally published information. 
 An automatic system is therefore necessary to be developed. 
+
 %[TODO: introduce the use of Matchine Learning]
-We decided to utilise an approach based on Machine Learning and supervised learning. Such solution provides higher tolerance to noise and faster generalisation capabilities than classical rule-based approaches.
-
-
+We decided to utilise an approach based on Machine Learning, which provides higher tolerance to noise and faster generalisation capabilities than classical rule-based approaches. This choice comes at the price of having data for training the probabilistic model. Looking at the scientific literature, this specific needs is an unexplored terrain. There are no records of previously made datasets in the superconductors domain. 
 %   - needs of information in superconductors
 %   - the available databases are a) old, b) small, c) manually constructed -> outdated
 %   - automatic extraction is required 
 % Dieb: Why the construction of the corpus is useful? 
 %   - what is the related work? mention other corpora 
 %   - need of training data for creating the model / system 
+In such unexplored terrain, there is no record of previous attempts in the scientific literature, nor existing datasets in the public domain. 
+In this submission, we present, in collaboration with the Nano Frontier Superconducting Material Group, our work and methodology for constructing a corpus for superconductor material data: SuperMat (Superconductors Materials). At the time of writing this paper, we have annotated 114 articles, with 9966 entities divided into six classes: material, class, critical temperature expressions, critical temperature value, critical pressure value and measurement method. Described in section \ref{sec:method} more in details. 
 
-
-In this unexplored terrain, there is no record of previous attempts in the scientific literature, nor existing datasets in the public domain. 
-
-In this submission, we present, in collaboration with the Nano Frontier Superconducting Material Group, our work and methodology for constructing a corpus for superconductor material data: SuperMat (Superconductors Materials). At the time of writing this paper, we have annotated X articles. 
-
-In Section \ref{sec:method} we describe how the corpus was collected and annotated.
-
-The paper is structured as follows: first we discuss the methodology used to obtain the data and produce the final result. Then we discuss the information and the validation of the data contained in the dataset. Finally, we provide example of applications, usability and availability information. 
+The paper is structured as follows: first we discuss the methodology used to obtain the data and produce the final result. Then we describe the information and the validation of the data contained in the dataset. Finally, we provide example of applications, usability and availability information. 
 
 % [END]
 % -- 
