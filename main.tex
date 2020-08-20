@@ -207,11 +207,12 @@ The paper is structured as follows: after the introduction, we discuss the metho
 \label{sec:method}
 \section{Method}
 \subsection{Content acquisition}
-Our content is composed by scientific articles. Mention the input data 
+Our content is composed by scientific articles that are somehow correlated with superconductors research. In this domain the characterisation and experimental papers are usually mixed, however we did not try to avoid specific papers manually. 
 
-We collected the content from several sources. (a) the Open Access version of articles referenced in the SuperCon database records. (b) Articles of interests according with domain-experts research topics. (c) Articles from the arXiv's “Condensed matter” category\footnote{\url{https://arxiv.org/archive/cond-mat}} obtained, by searching with keywords such as 'superconductor', 'critical temperature' and 'superconductivity'.
+We collected the content from several sources. (a) the Open Access version of articles referenced in the SuperCon database records. (b) Articles of interests according with domain-experts research topics. (c) Articles, selected randomly, from the arXiv's “Condensed matter” category\footnote{\url{https://arxiv.org/archive/cond-mat}} obtained, by searching with keywords such as 'superconductor', 'critical temperature' and 'superconductivity'.
 
-The Open Access version was obtained by using the service biblio-glutton lookup\footnote{\url{https://github.com/kermitt2/biblio-glutton}}, a Lookup service for bibliographic data which combine the database from Crossref\footnote{\url{https://www.crossref.org/}} and the service unPaywall\footnote{\url{http://unpaywall.org}}. 
+The OA articles were obtained using the service biblio-glutton lookup\footnote{\url{https://github.com/kermitt2/biblio-glutton}}. a Lookup service for bibliographic data which combine the data from the bibligraphic database, Crossref\footnote{\url{https://www.crossref.org/}} and the service unPaywall\footnote{\url{http://unpaywall.org}}. UnPaywall is a service that provide researchers, access to million of document outside the pay wall of publishers. 
+We created a set of queries using the bibligraphic data of the original papers, used to populate supercon. The query was sent to the biblio-glutton lookup and we were collecting only papers that provided the pdf link from UnpayWall.
 
 \begin{figure}[h]
     \centering
@@ -241,14 +242,11 @@ The Open Access version was obtained by using the service biblio-glutton lookup\
     \label{fig:keyword-top10-body}
 \end{figure}
 
-The corpus was obtained starting from PDF because 
-1. PDF is the most common format used for scientific article
-2. the availablility of the XML version was subject to tight restrictions 
-3. The text extracted from XML has two main problems: 
- - it is perceived to be cleaner, although error are still present, and their impact is higher, as it is assumed they are not present 
- - the XML is provided in a very ehterogeneus way, 
- - not all the papers in XML contain fulltext 
- - PDF extracted data is roughly more noisy, which could contribute to create more robust systems 
+The dataset was created from PDFs because of multiple 
+1. The PDF is the most common format used for scientific articles, while other formats, such XML or Latex, are available only on certain platforms
+2. We had access to certain subset of data from the publisher, although they were usable within the scope of our project, it was not possible to share the derived work of this dataset. Although it was not measured scientifically, the data provided in the XML gave the impression to be of higher quality than the data extracted from the PDF, which suffer from invalid encoding and other problems of structuring. We found out also that certain journals missed the fulltext. This seemed to be a random problem. Finally, the XML required the development of several parser, because, although each publisher claimed to be using JATS, in reality, they were using their own JATS flavour and standards. 
+3. the use of PDF is also motivated by the preivous experinece in data extraction from PDF, though the development of the opensource suite Grobid.  
+4.PDF extracted data is roughly more noisy, which could contribute to create more robust systems 
 
 The corpus was collected in batches, which are simpler to manage, with the growing dimension. 
 
