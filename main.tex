@@ -324,7 +324,7 @@ In addition, modifiers of these information (superconducting is increasing, decr
 
 \textbf{Superconducting critical temperature value} (tag: \texttt{<tcValue>}) represent the temperature at which the superconductivity occurs. This includes also boundaries conditions, such as the \textit{onset of superconductivity}, \textit{zero resistance}. 
 
-\textbf{Applied pressure} (tag: \texttt{<pressure>}) indicate the applied pressure when superconductors occurs. 
+\textbf{Applied pressure} (tag: \texttt{<pressure>}) indicate the applied pressure when superconductivity occurs. 
 
 \textbf{Measurement method} (tag: \texttt{<me\_method>}) indicates the techniques used to measure or calculate the presence of superconductivity. There are four main classes of methods: theoretical/calculated, electrical resistivity, magnetic susceptibility and specific heat. 
 (TODO: add more information why we take only these four type of information]
@@ -338,7 +338,7 @@ In addition, modifiers of these information (superconducting is increasing, decr
 
 \subsection{Annotation process}
 \label{sec:annotation-process}
-The annotation process was 
+The annotation process was designed from scratch taking in account previous experiences and related work~\cite{dieb}
 
 Before beginning the work on this dataset, we worked on two main preliminary tasks: a) build an automatic system prototype, and b) perform a preliminary annotation study, which are described in details in sections \ref{subsec:automatic-system-prototype} and \ref{subsec:preliminary-annotation-study}, respectively.
 
@@ -475,21 +475,21 @@ We have modified this model to better fit in our workflow obtaining five steps: 
 
 In our workflow there are three main actors: the automatic system, the computer scientists and the domain experts.
 
-\textb{Machine-based annotated data / Pre-annotations}
+\textbf{Machine-based annotated data / Pre-annotations}
 The first step of the annotation process is to generate pre-annotated data from unlabelled documents using the latest implementation available. This is usually the result of the latest trained ML model.  
 At the first iteration, since there is no model, this task can be skipped or it can be implemented by a simple rule-based algorithm. In general correcting pre-annotated data is easier than working with plain text. 
 If there are several models in cascade, the annotated data will be generated for each models.
 
-\textb{Annotation correction}
+\textbf{Annotation correction}
 The annotation process, also defined as "correction work" consists of manually correcting the documents and adding/removing or modifying the annotated information, following the annotation guidelines. 
 Once a document is completed, is it marked as "Annotated" and can be picked up for Validation, explained in the next subsection. 
 %It’s is very important that all mistakes and information are kept up-to-date in the documentation. In such case, the procedure is to open a new issue in the GitLab issues project page and follow the discussion there. Written discussions will facilitate, in future, the understanding of certain decisions.
 
-\textb{Validation from Domain experts}
+\textbf{Validation from Domain experts}
 The validation is an additional step that ensure a) double verification of the information, b) easily discovering eventual distraction errors, and c) verification and validation from domain experts before. 
 
 
-\textb{Review}
+\textbf{Review}
 Training and evaluation is performed and the results examined. The results (Precision, Recall, F-score) for all the models have been obtained using 10-fold cross-validation (average metrics over the 10 folds).
 
 At the end of each iteration, we review the evaluation improvements or regressions. Plan new changes or a new batch of documents to be corrected in the next iteration. in this phase also the model and the guidelines are reviewed.
