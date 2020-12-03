@@ -228,3 +228,53 @@
 %     \captionof{figure}{Distribution by publication year, automatically extracted from the PDF, and consolidated through lookup to Crossref. }
 %     \label{fig:distribution-by-year}
 % \end{figure}
+
+
+%[Summarise the approach]
+%Initially, a preliminary annotation study on a small number of papers was conducted for domain exploration, to draft and test the annotation process on a smaller scale, and to bootstrap the annotation guidelines.
+%Together with domain experts, we then finalised the tag-set and the annotation workflow. 
+
+%The input data, papers related to research in superconductivity, were collected from different sources and publishers.  
+%We followed the iterative annotation process of five steps: a) data preparation, b) annotation of relevant entities, c) validation by domain experts, d) test and evaluation, and e) review. 
+%The annotation guidelines were, eventually, updated at every iteration. 
+%We measured the Inter Annotation Agreement (IAA) using the Krippendorff alpha coefficient~\cite{Krippendorff2004ReliabilityIC} between the annotated (b) and the validated data (c). 
+%The obtained results were divided by the level of domain knowledge (domain-experts and non-domain experts) and annotation expertise (novices vs experienced). 
+%The aveage IAA, above 0.8, was satisfying. 
+%We measured the reliability of the guidelines by reporting that novices annotators with general materials science knowledge could reach a satisfying Inter Annotator Agreement (IAA) in autonomy.
+
+%As a result, we achieved a dataset composed of 145 articles, with 9966 entities (of which, about 4000 unique entities) [TODO: update figures]. They were annotated using six classes: material, class, critical temperature expressions, critical temperature value, critical pressure value and measurement method.
+%We added a layer of links between entities, of three types: 1) \textit{material-tc} linking materials and their respective superconducting critical temperature \textit{T\textsubscript{c}}. 
+%2) \textit{tc-pressure} connecting \textit{T\textsubscript{c}} and the applied pressure at which it was obtained, and 3) \textit{tc-me\_method} between the critical temperature with the method used to obtain the value of \textit{T\textsubscript{c}}. 
+%The superconducting critical temperature is susceptible to conditions such as magnetic field or pressure. 
+
+
+%In future, we plan to utilise this dataset as training and evaluation data for an automatic database creation system focusing on superconducting materials and their respective properties. 
+
+
+%The paper is structured as follows: after the introduction, we discuss the methodology used to obtain the data and to produce the final result. Then we describe the information and the validation of the data contained in the dataset. Finally, we provide examples of applications, usability and availability information. 
+
+
+%SuperMat can be used to support TDM processes for many complementary tasks. 
+%such as information retrieval, entity extraction, entity linking, and information clustering.
+
+% The dataset can bee utilised this dataset to train a sequence labelling system, which was then applied to semantically enhance a search engine for scientific documents and a document classification system using superconductors-related classes. 
+%The establishment of Text and Data Mining (TDM) processes is an unavoidable step to bridge information collected from scientific literature toward data-driven discovery. 
+
+
+%The goals of this study were multi-fold: a) definition of a preliminary tag-set schema, b) knowledge acquisition/improvement, c) measuring and monitoring the agreement over several iterative sessions, and d) discovering caveat and problems as soon as possible. 
+
+
+
+% \textbf{Entities extraction}: As preliminary evaluation we utilise our corpus for training and evaluating a sequence labelling model for entities recognition using only layouts generated from text (no layout or material information). 
+% These results (Table were computed by using 10-fold cross-validation applied to a standard CRF implementation (Wapiti\footnote{\url{https://wapiti.limsi.fr/}}) and a deep learning approach using a Bidirectional LSTM + CRF~\cite{Lample2016NeuralAF} (implemented through DeLFT\footnote{\url{https://github.com/kermitt2/delft}}). 
+
+
+%Although this dataset has been designed around the superconductors domain, there are considerable overlaps against other domains, for example extracting materials from PDFs for TDM of magnetocaloric materials. 
+
+%\textbf{Material parser}: The data in SuperMat can be used to construct a material parser for unstructured data. 
+%The resulting of this application is the ability to recognise various information from a material string, such as structure, formula, name and so on. 
+%We will publish the details of this application elsewhere. 
+
+
+%Lastly, finding documents describing materials belonging to a specific class might be tricky, because the mention of only the class in the document is not a guaranteed that such materials are actually discussed. The solution to this would be to retrieve documents where the class related to the materials entities correspond to the requested class. 
+%For example, a search of \textit{cuprate} will find all documents discussing materials that are classified as cuprates by their formula.
