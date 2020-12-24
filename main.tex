@@ -41,10 +41,10 @@
 \begin{abstract}
 A growing number of papers are published in the area of superconducting materials science.
 However, new text and data mining (TDM) processes are still needed to efficiently access and exploit this accumulated knowledge, paving the way towards data-driven superconducting materials design. 
-In this paper, we present SuperMat (Superconductor Materials), an annotated corpus of linked data from scientific publications on superconductors. The corpus is composed of 142 articles, 16040 entities, and 1399 links, annotated for six categories: the names, classes, and properties of materials, and the links to their respective superconducting critical temperature (\textit{T\textsubscript{c}}), and parametric conditions such as applied pressure or measurement methods.
+In this paper, we present SuperMat (Superconductor Materials), an annotated corpus of linked data from scientific publications on superconductors. The corpus is composed of 142 articles, 16052 entities, and 1398 links, annotated for six categories: the names, classes, and properties of materials, and the links to their respective superconducting critical temperature (\textit{T\textsubscript{c}}), and parametric conditions such as applied pressure or measurement methods.
 The construction of SuperMat resulted from a fruitful collaboration between computer scientists and material scientists, and its high quality is ensured through validation by domain experts. 
-The consistency and the quality of the annotations guidelines were ensured by satisfactory Inter Annotator Agreement (IAA) between the annotators and domain experts. 
-SuperMat includes the dataset, the annotation guidelines, and the annotation support tools that use automatic suggestions to help minimise human errors in annotation.
+The quality of the annotations guidelines was ensured by satisfactory Inter Annotator Agreement (IAA) between the annotators and domain experts. 
+SuperMat includes the dataset, the annotation guidelines, and the annotation support tools that use automatic suggestions to help minimise human errors.
 \end{abstract}
 
 \begin{document}
@@ -77,7 +77,7 @@ The National Institute for Materials Science (NIMS) in Japan has been manually c
 These databases would help researchers design new superconducting materials with a higher superconducting critical temperature (\textit{T\textsubscript{c}}), ideally up to room temperature~\cite{Hamlin2019SuperconductivityNR,stanev2017machine}.
 However, the current resources are very limited and not dynamic enough to incorporate the information from new publications in a timely manner. 
 In this paper, we present SuperMat (Superconductors Materials), an annotated linked corpus for superconducting material information. 
-This dataset contains 142 documents with 16040 (7151 uniques) entities, and 1399 links that can serve as an infrastructural data for TDM processes in the domain of superconducting materials. 
+This dataset contains 142 documents with 16052 (7166 uniques) entities, and 1398 links that can serve as an infrastructural data for TDM processes in the domain of superconducting materials. 
 Differently from SC-CoMIcs, SuperMat: (a) provides full papers instead of abstracts. Full papers contain more detailed information about superconducting materials research. (b) contains linked entities, and (c) is publicly available. 
 We also describe the construction guidelines for SuperMat, in the hope of supporting researchers to systematically create annotated data.
 Furthermore, the unique feature of links between entities in SuperMat will allow the development of more precise methodologies to connect materials with their properties.
@@ -256,7 +256,7 @@ To comply with copyright restriction, few articles from our dataset is not publi
 The top three publishers represented in the corpus are American Physical Society (APS), Elsevier, and IOP Publishing (Figure~\ref{fig:distribution-by-publisher}).
 Figure~\ref{fig:distribution-by-year} illustrate the distribution by publication date.
 
-We summarise SuperMat's content in Table~\ref{table:summary-content}, with the statistics of documents, entities, and links given separately. In particular, this dataset contains 16040 (7151 uniques) entities spread over six labels, and 1399 links. 
+We summarise SuperMat's content in Table~\ref{table:summary-content}, with the statistics of documents, entities, and links given separately. In particular, this dataset contains 16052 (7166 uniques) entities spread over six labels, and 1398 links. 
     
 Each document is encoded according to the XML TEI guidelines, which is a rich format for document representation. 
 We have carried out no specific customisation, in order to remain fully compliant with the general TEI schema.
@@ -323,7 +323,7 @@ Here is an example:
 
 In the above snippet, the entities \textit{"3.0 GPa"}, \textit{"exceed 45K"} and \textit{"LaFeAsO1-xHx"} are linked together via the pairs \texttt{@corresp, @xml:id}. 
 This schema supports multiple annotations to any part of the document. 
-For example, the entity \textit{exceed 45K} has a second link with corresponding identifier (\textit{"#9"}) to an annotation outside this paragraph.
+For example, the entity \textit{exceed 45K} has a second link with corresponding identifier (\textit{"\#9"}) to an annotation outside this paragraph.
 
 
 \section*{Applications}
