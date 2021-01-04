@@ -1,7 +1,7 @@
 \documentclass[fleqn,10pt]{wlscirep}
 \usepackage[T1]{fontenc}
 \usepackage{lineno}
-% \linenumbers
+\linenumbers
 % \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{authblk}
@@ -35,16 +35,16 @@
 \affil[2]{Nano Frontier Superconducting Materials Group, MANA, NIMS, Tsukuba, 305-0047, Japan}
 \affil[3]{ALMAnaCH, Inria, Paris, 75012, France}
 
-\affil[*]{corresponding authors: Luca Foppiano (FOPPIANO.Luca@nims.go.jp), Masashi Ishii (ISHII.Masashi@nims.go.jp)}
+\affil[*]{corresponding author: Masashi Ishii (ISHII.Masashi@nims.go.jp)}
 
 
 \begin{abstract}
 A growing number of papers are published in the area of superconducting materials science.
-However, new text and data mining (TDM) processes are still needed to efficiently access and exploit this accumulated knowledge, paving the way towards data-driven superconducting materials design. 
-In this paper, we present SuperMat (Superconductor Materials), an annotated corpus of linked data from scientific publications on superconductors. The corpus is composed of 142 articles, 16052 entities, and 1398 links, annotated for six categories: the names, classes, and properties of materials, and the links to their respective superconducting critical temperature (\textit{T\textsubscript{c}}), and parametric conditions such as applied pressure or measurement methods.
+However, novel text and data mining (TDM) processes are still needed to efficiently access and exploit this accumulated knowledge, paving the way towards data-driven materials design. 
+Herein, we present SuperMat (Superconductor Materials), an annotated corpus of linked data derived from scientific publications on superconductors, which comprises 142 articles, 16052 entities, and 1398 links that are characterised into six categories: the names, classes, and properties of materials; links to their respective superconducting critical temperature (\textit{T\textsubscript{c}}); and parametric conditions such as applied pressure or measurement methods.
 The construction of SuperMat resulted from a fruitful collaboration between computer scientists and material scientists, and its high quality is ensured through validation by domain experts. 
-The quality of the annotations guidelines was ensured by satisfactory Inter Annotator Agreement (IAA) between the annotators and domain experts. 
-SuperMat includes the dataset, the annotation guidelines, and the annotation support tools that use automatic suggestions to help minimise human errors.
+The quality of the annotation guidelines was ensured by satisfactory Inter Annotator Agreement (IAA) between the annotators and the domain experts. 
+SuperMat includes the dataset, annotation guidelines, and annotation support tools that use automatic suggestions to help minimise human errors.
 \end{abstract}
 
 \begin{document}
@@ -54,15 +54,16 @@ SuperMat includes the dataset, the annotation guidelines, and the annotation sup
 \section*{Background \& summary}
 The vast majority of scientific knowledge exists as published articles~\cite{Grigas2017JustGI, Khabsa2014TheNO, OrduaMalea2015MethodsFE, Bjrk2009ScientificJP}. 
 These publications are presented mainly as text, which is challenging to be used as a machine-readable structure. 
-Meanwhile, as a part of the text and data mining (TDM) discipline, computer-assisted information collection from the literature has become a supportive asset for scientific research. 
-In the past decades, new TDM processes were developed for several natural science disciplines towards automatic document processing such as information retrieval, entity extraction, and clustering.  
-TDM has been applied in biology to identify interaction between agents (e.g. bacteria, viruses, genes, and proteins)~\cite{10.1371/journal.pone.0004554, Krallinger2010, Krallinger2009ExtractionOH} to support research of serious diseases including cancer~\cite{Krasnitz2019CancerB}. 
-In chemistry, it was used for chemical compounds name disambiguation, synthesis extraction, and retrieval~\cite{Hawizy2011ChemicalTaggerAT}.
-In both domains, the application of TDM were based on manually curated datasets (corpora) as the infrastructures. Examples are the BioCreative IV CHEMDNER corpus~\cite{Krallinger2015TheCC} in chemistry, and Genia~\cite{Kim2003GENIAC} and GENETAG~\cite{Tanabe2005GENETAGAT, Ohta2009IncorporatingGA} in biology. Such datasets are crucial for developing, training, and evaluating TDM systems.
+Meanwhile, as a part of the text and data mining (TDM) discipline, computer-assisted information collection from the literature has become a supportive asset for scientific research~\cite{doi:10.1063/5.0021106}. 
+In the past decades, new TDM processes were developed for several natural science disciplines to achieve automatic document processing such as information retrieval, entity extraction, and clustering.  
+TDM has been applied in biology for identifing interactions between agents (e.g. bacteria, viruses, genes, and proteins)~\cite{10.1371/journal.pone.0004554, Krallinger2010, Krallinger2009ExtractionOH} to support the research on serious diseases including cancer~\cite{Krasnitz2019CancerB}. 
+In chemistry, it was used for the disambiguation of chemical compounds names, synthesis extraction, and retrieval~\cite{Hawizy2011ChemicalTaggerAT}.
+In both domains, the application of TDM was based on manually curated datasets (corpora) that functioned as infrastructures. Examples are the BioCreative IV CHEMDNER corpus~\cite{Krallinger2015TheCC} in chemistry, and Genia~\cite{Kim2003GENIAC} and GENETAG~\cite{Tanabe2005GENETAGAT, Ohta2009IncorporatingGA} in biology. Such datasets are crucial for developing, training, and evaluating TDM systems.
 
-In comparison, such resources in the materials science domain are rather limited. Reported cases include NaDev~\cite{Dieb2016} to support the research of nanocrystal devices,  a material-synthesis corpus, for extracting synthesis recipes~\cite{kononova_text-mined_2019}, and SC-CoMIcs~\cite{yamaguchi-etal-2020-sc} for supporting TDM processes superconductor research.
-To address this shortage of infrastructure, ab-initio calculations are sometimes used~\cite{Jain2013CommentaryTM_materialsProject} but they might not accurately describe the real system. Most of the available experimental datasets were extracted manually~\cite{doi:10.1021/cm400893e}. 
-Moreover, there remain several difficulties towards the data-driven exploration of materials (also called Materials Informatics (MI)): the lack of data standard, infant stage of the data-driven culture, a wide variety of conflicting stakeholders, and missing incentives for researchers to contribute to large collaborative initiatives~\cite{Hill2016MaterialsSW}. 
+In comparison, such resources in the materials science domain are rather limited. 
+Reported cases include NaDev~\cite{Dieb2016} on nanocrystal devices research, SC-CoMIcs~\cite{yamaguchi-etal-2020-sc} in the superconductors domain, and a corpus for extracting synthesis recipes~\cite{kononova_text-mined_2019}.
+To address this shortage of infrastructure, experimental data is extracted manually~\cite{doi:10.1021/cm400893e}, or ab-initio calculations are used~\cite{Jain2013CommentaryTM_materialsProject} but they might not accurately describe the real system.
+Several challenges still hinder the data-driven exploration of materials (also called Materials Informatics (MI)), namely: the lack of data standard, infant stage of the data-driven culture, a wide variety of conflicting stakeholders, and missing incentives for researchers to contribute to large collaborative initiatives~\cite{Hill2016MaterialsSW}. 
 To bridge these gaps, it is necessary to create infrastructural resources to support TDM processes in materials science through the automatic construction of databases for materials and their properties. 
 Such application can minimise the need for humans to read the new papers and extract the key information therein. 
 Equally importantly, it enables scientists to focus and leverage computing power and human resources to find deeper relationships between superficially unrelated information. 
@@ -70,17 +71,17 @@ Other applications include providing semantically enriched search engines that a
 These processes cannot be established without essential resources such as dictionaries, lexicons, and datasets. 
 
 % Superconductors domain
-Research of superconducting materials has been growing rapidly towards both fundamental science and applications. Superconductors display many intriguing phenomena including zero-resistivity, the ability to host a high magnetic field, quantisation of the magnetic flux, and vortex pinning.  
-Current applications of superconductors range from medical instruments, high-speed trains, quantum computers, and the Linear Hadron Collider (LHC)~\cite{PhilippeBook, Kizu2010ConstructionOT, Cardani2017NewAO}. 
+Research on superconducting materials has been growing rapidly towards both fundamental science as well as practical applications. Superconductors display many intriguing phenomena including zero-resistivity, the ability to host a high magnetic field, quantisation of the magnetic flux, and vortex pinning.  
+Current applications of superconductors include medical instruments, high-speed trains, quantum computers, and the Linear Hadron Collider (LHC)~\cite{PhilippeBook, Kizu2010ConstructionOT, Cardani2017NewAO}. 
 However, discovering a new superconductor is a challenging task, as only 3\% of candidate materials were found to be superconductors~\cite{Konno2018DeepLO}.
 The National Institute for Materials Science (NIMS) in Japan has been manually constructing databases to support material research, and SuperCon (\url{http://supercon.nims.go.jp}) is a manually curated data source for the superconductor domain.
-These databases would help researchers design new superconducting materials with a higher superconducting critical temperature (\textit{T\textsubscript{c}}), ideally up to room temperature~\cite{Hamlin2019SuperconductivityNR,stanev2017machine}.
+These databases would help researchers design new superconducting materials with a higher superconducting critical temperature (\textit{T\textsubscript{c}}) (ideally up to room temperature)~\cite{Hamlin2019SuperconductivityNR,stanev2017machine}.
 However, the current resources are very limited and not dynamic enough to incorporate the information from new publications in a timely manner. 
 In this paper, we present SuperMat (Superconductors Materials), an annotated linked corpus for superconducting material information. 
-This dataset contains 142 documents with 16052 (7166 uniques) entities, and 1398 links that can serve as an infrastructural data for TDM processes in the domain of superconducting materials. 
-Differently from SC-CoMIcs, SuperMat: (a) provides full papers instead of abstracts. Full papers contain more detailed information about superconducting materials research. (b) contains linked entities, and (c) is publicly available. 
+This dataset contains 142 documents with 16052 (7166 unique) entities, and 1398 links that can serve as an infrastructural data for TDM processes in the domain of superconducting materials. 
+SuperMat is different from SC-CoMIcs based on the following reasons: (a) it provides full papers instead of abstracts which contain more detailed information about the research on superconducting materials; (b) it contains linked entities, and (c) is publicly available. 
 We also describe the construction guidelines for SuperMat, in the hope of supporting researchers to systematically create annotated data.
-Furthermore, the unique feature of links between entities in SuperMat will allow the development of more precise methodologies to connect materials with their properties.
+Furthermore, the unique feature of links between entities in SuperMat will allow the development of more precise methodologies to associate a particular material with its properties.
 
 \label{sec:method}
 \section*{Methods}
@@ -93,67 +94,67 @@ The original documents were collected from the following sources: (a) the Open A
 (b) articles provided by domain experts containing suitable items and potential links of material names, \textit{T\textsubscript{c}} values, measurement methods, and pressures; (c) articles from "condensed matter" category of arXiv (\url{https://arxiv.org/archive/cond-mat}) selected using the search terms of "superconductor", "critical temperature", and "superconductivity". 
 
 OA versions of articles were obtained using a lookup service for bibliographic data called biblio-glutton (\url{https://github.com/kermitt2/biblio-glutton}) that aggregates data from various sources: the Crossref (\url{https://www.crossref.org/}) bibliographic database, the unPaywall (\url{http://unpaywall.org}) service, the PubMed Central repository (\url{https://pubmed.ncbi.nlm.nih.gov/}), and mappings to other databases. 
-We queried \textit{biblio-glutton} using the bibliographic data of each article referenced in Supercon and, when available, we downloaded the OA article associated with the retrieved record. 
-A record in Unpaywall does not guarantee that the downloaded article could be reused to create derivative works. Therefore, for each article that was not downloaded from arXiv, we manually verified that was OA by checking for explicit mention of the Creative Commons licence in the PDF document or at the original publisher's page. 
+We queried \textit{biblio-glutton} using the bibliographic data of each article referenced in Supercon; subsequently, we downloaded the OA article associated with the retrieved record, if available. 
+A record in Unpaywall does not guarantee that the downloaded article could be reused to create derivative works. Therefore, for each article that was not downloaded from arXiv, we manually verified its reusability by checking for an explicit statement of the Creative Commons licence in the PDF document or at the original publisher's page. 
 
 \subsection*{Preliminary annotation study}
 \label{subsec:preliminary-annotation-study}
 Preliminary annotation study was carried out to assess the effort required from the annotators to reach an acceptable Inter Annotation Agreement (IAA > 0.7) .
 We annotated two randomly selected OA papers, by using a preliminary version of the guidelines with a limited tag-set of four labels: \texttt{<material>}, \texttt{<tc>} (expression describing the presence or absence of superconductivity), \texttt{<tcValue>} (value of \textit{T\textsubscript{c}}), and \texttt{<doping>} (amount of substitution, such as stochiometric values, usually expressed as functions of x or y).
 The process was iterated multiple times.
-Each iteration ended with computing the IAA using the Krippendorff's alpha coefficient~\cite{Krippendorff2004ReliabilityIC,Zapf2016MeasuringIR}, annotators discussing the disagreements, and updating the guidelines.
+Each iteration ended with computing the IAA using the Krippendorff's alpha coefficient~\cite{Krippendorff2004ReliabilityIC,Zapf2016MeasuringIR}, while annotators discussed the disagreements, and updated the guidelines.
 
-From the results in Table~\ref{table:summary-preliminary-annotation}, IAA reached a satisfactory level (~0.9) after the third iteration. 
-In the second iteration, although the average IAA reached 0.7 on three of the four labels, the average agreement was not yet satisfactory. 
+Based on the results in Table~\ref{table:summary-preliminary-annotation}, IAA reached a satisfactory level (~0.9) after the third iteration. 
+In the second iteration, although the average IAA reached 0.7 on three of the four labels, the average agreement was not satisfactory. 
 When analysing the disagreement, we noticed that the low score in the \texttt{<doping>} label was caused by a heavy overlap with the \texttt{<material>} label, which required more precise definition in the guidelines. 
 
 Based on this preliminary study, the following changes were implemented. 
-(a) The label \texttt{<doping>} was merged under the \texttt{<material>} because, even with detailed documentation, it was too difficult for humans to annotate them in a consistent way.
+(a) The label \texttt{<doping>} was merged under the \texttt{<material>} because, even with detailed documentation it was too difficult for humans to annotate them in a consistent way.
 (b) Three more labels were added: measurement methods and pressure (described as parametric conditions in relation to \textit{T\textsubscript{c}}), and class of materials. 
 
 \subsection*{Tag-set design}
-The tag set (also referred to, as \textit{labels}) represents the classes of entities and the type of links between them, which were designed to be extracted from the text (Figure~\ref{fig:example-annotations-and-links}).
+The tag set (also referred to as \textit{labels}) represents the classes of entities and the type of links between them, which were designed to be extracted from the text (Figure~\ref{fig:example-annotations-and-links}).
 
 \subsubsection*{Entities}
-Entities (also referred as Named Entities, mentions, or surface forms) are chunks of texts that represent a information of interest, as follow: 
+Entities (also referred as Named Entities, mentions, or surface forms) are chunks of texts that represent an information of interest, as follow: 
 
 \begin{itemize}
 \item Class (tag: \texttt{<class>}) represents a group of materials defined by certain characteristics.
 Superconducting materials can be classified according to different criteria such as the composition and magnetic properties. 
-Among publications collected for this study, the domain experts identified three types of classes: (a) based on the composition and crystal structure, (b) based on material phenomena (e.g. "I-type" and "II-type superconductivity", "BCS superconductors", "nematic", and "conventional/unconventional superconductivity"), and (c) high/low \textit{T\textsubscript{c}} value (e.g. "high-tc” superconductors). 
+Among publications collected for this study, the domain experts identified three types of classes based on: (a) the composition and crystal structure, (b) material phenomena (e.g. "I-type" and "II-type superconductivity", "BCS superconductors", "nematic", and "conventional/unconventional superconductivity"), and (c) high/low \textit{T\textsubscript{c}} value (e.g. "high-tc” superconductors). 
 
 In this work, we only considered the (a) classes, mainly because the material composition and crystal structure do not change with time. For example, a cuprate from 1998 is still called a cuprate today. 
-In comparison, many phenomena used for (b) are not robust enough, and can be biased by the viewpoint of the author(s) or research group, or the measurement methods. 
-Finally, the definition of "high-tc" superconductors (c) is completely relative: with the progress of research, materials once considered "high-tc" might not be so anymore.
+In comparison, many material phenomena used for (b) are not robust enough, and can be biased by the viewpoint of the author(s) or research group, or the measurement methods. 
+Finally, the definition of "high-tc" superconductors (c) is completely relative; i.e., with the progress of research, materials once considered "high-tc" might not be so anymore.
 
 \item Material (tag: \texttt{<material>}) identifies the name of one or more materials. 
-This label is used to collect this following types of information: 
+This label is used to collect the following types of information: 
 \begin{itemize}
-    \item Chemical formula indicating the material by general or stochiometric formula (e.g. \texttt{LaFe\textsubscript{1-x} O\textsubscript{7}}, \texttt{WB\textsubscript{2}}),
+    \item Chemical formula indicating the material by its general or stochiometric formula (e.g. \texttt{LaFe\textsubscript{1-x}O\textsubscript{7}}, \texttt{WB\textsubscript{2}}),
     \item Compositional name (e.g. \texttt{magnesium diboride}) or abbreviations (e.g. \texttt{YBCO}), 
     \item The material's shape (e.g. wire, powder, thin film) or form of material (e.g. single/poly crystal), 
-    \item Modification a dopant (\texttt{Zn-doped}, \texttt{Si-doped}) or the percentage of doping (\texttt{2\%-doped}). We also considered qualitative expressions such as \textit{overdoped}, \textit{lightly doped}, and \textit{pure} as valid information, 
-    \item Substrate information (e.g. \texttt{grown on MgO(100) film}) when it adjacent to the material name or formula, in the text,
-    \item Additional information about the sample (e.g. \texttt{as-grown}, \texttt{untwinned}, \texttt{single-layer}) when it adjacent to the material name or formula, in the text. 
+    \item Modification by a dopant (\texttt{Zn-doped}, \texttt{Si-doped}) or by percentage of doping (\texttt{2\%-doped}). We also considered qualitative expressions such as \textit{overdoped}, \textit{lightly doped}, and \textit{pure} as valid information, 
+    \item Substrate information (e.g. \texttt{grown on MgO(100) film}) when it was adjacent to the material name or formula, in the text,
+    \item Additional information about the sample (e.g. \texttt{as-grown}, \texttt{untwinned}, \texttt{single-layer}) when it was adjacent to the material name or formula, in the text. 
 \end{itemize}
 
 \item Superconducting critical temperature (tag: \texttt{<tc>}) identifies expressions related to the phenomenon of superconductivity. Any temperature mentioned in the text is not necessarily the \textit{T\textsubscript{c}}. Rather, it could refer to the temperature for other processes/events such as annealing/sintering temperature, specific measurements, and structural changes.
 This label identifies the presence or absence of superconductivity at a given temperature (\textit{showing/not showing superconductivity at this T\textsubscript{c}}).
-In addition, modifiers of this information (increasing/descreasing \textit{T\textsubscript{c}} are also retained. 
+In addition, modifiers of this information (increasing/descreasing \textit{T\textsubscript{c}}) are also retained. 
 
-\item Superconducting critical temperature value (tag: \texttt{<tcValue>}) represents the temperature at which the the superconducting phenomena occur. 
+\item Superconducting critical temperature value (tag: \texttt{<tcValue>}) represents the temperature at which the superconducting phenomenon occurs. 
 It can be defined by different experimental criteria, such as the onset, mid-point of resistivity drop, or zero resistivity.
-This includes also boundaries conditions, such as the \textit{onset of superconductivity}, \textit{zero resistance}. 
+This value also considers boundary conditions, such as the \textit{onset of superconductivity}, \textit{zero resistance}. 
 
 \item Applied pressure (tag: \texttt{<pressure>}) indicates the applied pressure corresponding to a measured \textit{T\textsubscript{c}}. 
 
-\item The measurement method (tag: \texttt{<me\_method>}) indicates the method used to measure or calculate the presence of superconductivity. Here we considered the following categories: resistivity, magnetic susceptibility, specific heat, and theoretical calculations. 
+\item The measurement method (tag: \texttt{<me\_method>}) indicates the method used to measure or calculate the presence of superconductivity. Here, we considered the following categories: resistivity, magnetic susceptibility, specific heat, and theoretical calculations. 
 \end{itemize}
 
 \FloatBarrier
 \subsubsection*{Links}
 The links connects entities of materials or samples to their corresponding properties, conditions, and results. 
-The links are non-directional, and there is no restrictions on the number of links for each entity. 
+The links are non-directional, and there are no restrictions on the number of links for each entity. 
 We defined three types of links:
 
 \begin{itemize}
@@ -165,14 +166,14 @@ We defined three types of links:
 
 \subsection*{Annotation guidelines}
 \label{subsec:annotation-guidelines}
-Annotation guidelines are the principles and the rules describing what constitute the desired information for the SuperMat dataset and how to annotate it. They include detailed description of the specific rules defined for each type of information to be annotated, together with one or more definitions, examples illustrating what to annotate in each case, exceptions, and references. We used an online system to track the discussions and decisions when a question or a comment was raised, and provided a link to such issues in the respective description or example. 
+Annotation guidelines include the principles and the rules that describe  what constitutes as desired information for the SuperMat dataset and how to annotate it. They include detailed description of the specific rules that have been defined for each type of information to be annotated, with one or more definitions and examples illustrating what to annotate in different cases, exceptions, and references. We used an online system to track the discussions and decisions when a question or a comment was raised, and provided a link to such issues in the respective description or example. 
 In addition, the guidelines include \textit{linking rules} that provide information on how to correctly connect the entities in a relationship. 
 The guidelines were built using a dynamic markup language (called RestructuredText) and stored in a git (\url{https://git-scm.com/}) version control system repository. We deployed them as HTML files via web, which were updated automatically after each modification.
 
 \subsection*{Annotation support tools}
 \label{subsec:annotation-support-tool}
 The task of annotating documents is tedious and requires both attention and subject knowledge from the annotators.
-Annotation support tools aim to maximise the efficiency of annotators and minimise the human mistakes. 
+Annotation support tools aim to maximise the efficiency of annotators and minimise human mistakes. 
 They are composed of a web-based collaborative annotation tool, automatic annotation suggestions, and automatic corpus analysis. 
 
 \subsubsection*{Web-based collaborative annotation tool: INCEpTION}
@@ -183,7 +184,7 @@ After evaluating several tools, we selected INCEpTION~\cite{tubiblio106270,eckar
 INCEpTION provides supportive functionalities that include: 
 \begin{itemize}
     \item Multi-layer annotation sheets allow different annotation schemas over the same documents, 
-    \item Two annotation steps. Annotation consists of manually correcting pre-imported documents, while curation allows another user to validate the annotations (Figure~\ref{fig:inception-curation-interface}). 
+    \item Two annotation steps: annotation consists of manually correcting pre-imported documents, while curation allows another user to validate the annotations (Figure~\ref{fig:inception-curation-interface}). 
     \item On-the-fly automatic suggestions based on active learning and string matching (Figure~\ref{fig:inception-curation-interface}), 
     \item Bulk annotation corrections, and 
     \item Being open-source (Apache 2.0 license), and under active development at the time of this paper (\url{https://inception-project.github.io/}).
@@ -192,30 +193,31 @@ INCEpTION provides supportive functionalities that include:
 \subsubsection*{Annotation suggestions}
 \label{subsec:automatic-system-prototype}
 
-Previous work demonstrated that annotation suggestions improve the quality of the output~\cite{Fort2010InfluenceOP,Nvol2011SemiautomaticSA,Lingren2014EvaluatingTI}.
+Previous works have demonstrated that annotation suggestions improve the quality of the output~\cite{Fort2010InfluenceOP,Nvol2011SemiautomaticSA,Lingren2014EvaluatingTI}.
 We provide two types of annotations suggestions. 
 (i) \textit{Machine-based annotated data} that were assigned to the documents before loading into the annotation tool. Here, we use a machine learning (ML)-based system from a previously implemented prototype~\cite{foppiano2019proposal} to support our tag-set. 
 (ii). \textit{Active learning recommendations} provided by INCEpTION are assigned on-the-fly based on previous annotations. 
-The active-learning recommendations are less precise since they aim to increase the recall, and therefore they need to be explicitly accepted by the user.
+The active-learning recommendations are less precise since they aim to increase the recall, and therefore they need to be explicitly accepted by the annotator.
 % (Figure~\ref{fig:example-automatic-suggestions}). 
 
 \subsubsection*{Automatic corpus analysis}
 Automatic corpus analysis is a set of scripts designed to run after the validation step. 
-These scripts performs two actions: automatically finding inconsistencies in the links and entities, and extracting statistics of the corpus. 
+These scripts automatically find inconsistencies in the links and entities, while extracting the statistics of the corpus. 
 We calculated the inconsistencies by examining every annotated entity and computing the frequency of the same text being annotated with different labels. 
-The script outputs a summary table visualising each annotation value, their labels, and their frequency.
-We visually inspected this table, because, the reported inconsistencies can be either obvious mistakes (Table~\ref{table:dataset-inconsistencies-clear}) or generated by ambiguities (Table~\ref{table:dataset-inconsistencies-unclear}), and they should be verified in the context. 
-Although the links are conceptually non-directed, in practice we have defined a convention to maintain their consistency. For example, material-tc is always represented as a link between the \texttt{<tcValue>} and \texttt{<material>} entities. 
+The script outputs a summary table by visualising each annotation value, as well as their labels and frequencies.
+We visually inspected this table, because the reported inconsistencies can be either obvious mistakes (Table~\ref{table:dataset-inconsistencies-clear}) or arise from ambiguities (Table~\ref{table:dataset-inconsistencies-unclear}); therefore their context should be verified. 
+
+Although the links are conceptually non-directed, we have defined a practical convention to maintain their consistency. For example, \textit{material-tc} is always represented as a link between \texttt{<tcValue>} and \texttt{<material>} entities. 
 The script also computes the statistics (Table \ref{table:summary-content}) for the number of entities (total, unique, by class), the number of links (total, intra- and inter-paragraph, between paragraphs), and other statistical information. 
 
 \FloatBarrier
 \subsection*{Annotation process}
 \label{subsec:annotation-workflow}
-The annotation workflow (Figure~\ref{fig:schema-comparison-modified-workflow}) was designed following the \textit{MATTER}(Model, Annotate, Train, Test, Evaluate, and Revise) schema\cite{pustejovsky2012natural}  and other related work~\cite{Dieb2016, Krallinger2015TheCC}.
-We workflow is composed of five steps (Figure~\ref{fig:schema-comparison-modified-workflow}): \textit{Data-preparation}, \textit{Correction}, \textit{Validation}, \textit{Test and evaluation}, \textit{Revise}. 
+The annotation workflow (Figure~\ref{fig:schema-comparison-modified-workflow}) was designed following the \textit{MATTER} (Model, Annotate, Train, Test, Evaluate, and Revise) schema\cite{pustejovsky2012natural} and other related work~\cite{Dieb2016, Krallinger2015TheCC}.
+The workflow is composed of five steps (Figure~\ref{fig:schema-comparison-modified-workflow}): \textit{data-preparation}, \textit{correction}, \textit{validation}, \textit{testing and evaluation}, \textit{revision}. 
 This workflow involves three main actors: the automatic process, computer scientists, and the domain experts.
 
-The first step of the annotation process preparing machine-based annotated data from the source PDF documents. 
+The first step of the annotation process involves preparing the machine-based annotated data from the source PDF documents. 
 The PDF files are converted to an XML-based format, and annotation is automatically applied. 
 This is followed by four more steps: 
 
@@ -223,7 +225,7 @@ This is followed by four more steps:
 \item Annotation: The human annotator can select a document and manually add, remove, or modify each entity based on rules defined in the guidelines. Once the annotation is complete, the document is marked "ready" for the validation. 
 
 \item Validation/Curation by domain experts: Annotations from different users are validated and merged into a final document (Figure~\ref{fig:inception-curation-interface}). 
-The domain expert ("curator"), can compare the different annotated versions, and select the best combination of annotations, or add new. 
+The domain expert ("curator"), can compare the different annotated versions, and select the best combination of annotations, or add new ones. 
 This step ensures that the annotations are cross-checked and that the document is validated by domain experts.
 
 \item Automatic consistency checks and statistical analysis: This step aims to discover obvious mistakes such as mislabelling or incorrect linking. 
@@ -252,15 +254,14 @@ There are two processes of data transformation (Figure~\ref{fig:data-transformat
 \section*{Data Record}
 \label{sec:data-record}
 The dataset is composed of 142 PDF documents, of which 92\% (130) are OA (Figure~\ref{fig:arxiv-rate}).
-To comply with copyright restriction, few articles from our dataset is not publicly available in our repository. 
+To comply with copyright restriction, few articles from our dataset are not publicly available in our repository. 
 The top three publishers represented in the corpus are American Physical Society (APS), Elsevier, and IOP Publishing (Figure~\ref{fig:distribution-by-publisher}).
 Figure~\ref{fig:distribution-by-year} illustrate the distribution by publication date.
+We summarise SuperMat's content in Table~\ref{table:summary-content}, with the statistics of documents, entities, and links given separately. In particular, this dataset contains 16052 (7166 uniques) entities spread over six labels and 1398 links. 
 
-We summarise SuperMat's content in Table~\ref{table:summary-content}, with the statistics of documents, entities, and links given separately. In particular, this dataset contains 16052 (7166 uniques) entities spread over six labels, and 1398 links. 
-    
 Each document is encoded according to the XML TEI guidelines, which is a rich format for document representation. 
 We have carried out no specific customisation, in order to remain fully compliant with the general TEI schema.
-A TEI document has two main parts, the header (within the \texttt{<teiHeader>} tags) containing all the document metadata, and the body (within the section delimited by the \texttt{<text>} tag). 
+A TEI document has two main parts: the header (within the \texttt{<teiHeader>} tags) containing all the document metadata, and the body (within the section delimited by the \texttt{<text>} tag). 
 The transformed data has the following structure: 
 
 \begin{verbatim}
@@ -299,7 +300,7 @@ For instance, the keywords section, which groups together the key terms defined 
 For both the abstract and the article body, the text is segmented in paragraphs (by means of the \texttt{<p>} element). 
 The text is annotated with the generic \texttt{<rs>} (referencing string) element adorned with three attributes: \texttt{@type} (the entity type), \texttt{@corresp} (to provide a link to another annotation such as from \textit{material} to \textit{T\textsubscript{c}}), and \texttt{@xml:id} (to uniquely identify the annotation for referencing or linking purposes).
 
-Because only the captions of tables and figures are retained from the original source, a simplified encoding was defined by means of the \texttt{<ab>} element characterised by a \texttt{@type} attribute: that is \texttt{<ab type="figureCaption">} for figure captions and \texttt{<ab type="tableCaption">} for table captions. 
+Because only the captions of tables and figures are retained from the original source, a simplified encoding was defined by means of the \texttt{<ab>} element characterised by a \texttt{@type} attribute; that is, \texttt{<ab type="figureCaption">} for figure captions and \texttt{<ab type="tableCaption">} for table captions. 
 Here is an example: 
 
 \begin{verbatim}
@@ -323,7 +324,7 @@ Here is an example:
 
 In the above snippet, the entities \textit{"3.0 GPa"}, \textit{"exceed 45K"} and \textit{"LaFeAsO1-xHx"} are linked together via the pairs \texttt{@corresp, @xml:id}. 
 This schema supports multiple annotations to any part of the document. 
-For example, the entity \textit{exceed 45K} has a second link with corresponding identifier (\textit{"\#9"}) to an annotation outside this paragraph.
+For example, the entity \textit{exceed 45K} has a second link with the corresponding identifier (\textit{"\#9"}) to an annotation outside this paragraph.
 
 
 \section*{Applications}
@@ -333,26 +334,26 @@ SuperMat is constructed as a resource for TDM applications in superconducting ma
 (2) articles classification, 
 (3) named entity extraction (for example, automatic dictionary construction), 
 (4) clustering and document synthesis,
-(5) training of Machine Learning (ML) algorithms,
+(5) training of machine learning (ML) algorithms,
 (6) evaluation of rule-based or ML-based algorithms, and 
 (7) development of downstream processes, such as material name parser, or quantity normalisation.
 
 \subsection*{Reusability}
 The data structure employed in this study (classes of materials, materials names, and related properties), is similar to that used in other domains in materials science. 
-Therefore, SuperMat can be reused to facilitate or bootstrap the creation of new TDM processes in areas of materials research domains besides superconductors.
+Therefore, SuperMat can be reused to facilitate or bootstrap the creation of new TDM processes in areas of materials research besides superconductors.
 SuperMat could be used as a feature for a machine learning model for NER or EL systems in materials science such as magnetocaloric, piezoelectric, and thermoelectric domains.  
 
 \subsection*{Practical applications}
 Such a dataset may benefit several types of possible applications: 
 
 \begin{itemize}
-    \item Evaluation tasks: This corpus can be used for the evaluation tasks on automatic extraction. In particular, we can envision two popular tasks in superconducting materials science: (a) NER and (b) EL methods. EL techniques have been mainly designed and studied using text from Wikipedia and newswires services which represent most of the available data. 
-    To our knowledge, however, there is no application within materials science.
+    \item Evaluation tasks: This corpus can be used for evaluation tasks on automatic extraction. In particular, we can envision two popular tasks in superconducting materials science, namely: (a) NER and (b) EL methods. EL techniques have been mainly designed and studied using text from Wikipedia and newswires services which represent most of the available data. 
+    To the best of our knowledge, however, there is no application within materials science.
     \item Automatic information extraction for superconducting materials: This dataset can be used as training data for such a purpose. 
     Automatic information extraction using ML and text mining techniques can accelerate the construction of databases for superconducting materials.
     \item Document retrieval: Information retrieval is a key application helping researchers overcome information overload.
-    One way is query expansion to cover multiple expressions of the same term. 
-    By collecting and clustering all expressions under the same concept, it would be possible to retrieve documents where e.g. the resistivity measurement is described by a phrase other than "resistivity". 
+    One way is through query expansion to cover multiple expressions of the same term. 
+    By collecting and clustering all expressions under the same concept, it would be possible to retrieve documents when, for example, the resistivity measurement is described by a phrase other than "resistivity". 
     Furthermore, the assigned labels can be used to boost documents where a certain term belongs on a specific label. 
     For example, \textit{cobalt oxide} can appear as either \texttt{<material>} or \texttt{<class>} depending on the context, while a user would like to obtain documents where \textit{cobalt oxide} appears as \texttt{<material>}.
     \item Weighted-clustering: Scientific document clustering has recently gained growing attention because of its potential capacity for finding additional relevant documents of interest.
@@ -365,7 +366,7 @@ Such a dataset may benefit several types of possible applications:
 The following measures were employed to ensure the creation of a high-quality dataset: 
 \begin{itemize}
     \item Each document was revised and validated by domain experts, 
-    \item The workflow begins by assigning machine-based annotated data. This has demonstrated to improve the annotation task over several aspects: time consumption, error rate, and annotation agreement~\cite{Fort2010InfluenceOP,Nvol2011SemiautomaticSA,Lingren2014EvaluatingTI}.
+    \item The workflow begins by assigning machine-based annotated data. This has demonstrated to improve the annotation task over several aspects, namely: time consumption, error rate, and annotation agreement~\cite{Fort2010InfluenceOP,Nvol2011SemiautomaticSA,Lingren2014EvaluatingTI}.
     \item On-the-fly automatic annotation recommendations, which provide fresh suggestions based on online decisions made by the annotators.
     \item The annotators have rapid access to changes in the annotation guidelines.
     \item The discussions were documented and linked in the guidelines. 
@@ -375,21 +376,21 @@ The following measures were employed to ensure the creation of a high-quality da
 These guidelines are a vital piece of this work since they contain knowledge accumulated from these activities.
 However, measuring the completeness of the guidelines is challenging. 
 Assuming that the documents validated by domain experts represent the ground truth, we conducted IAA analysis between different annotators against the ground truth, using the Krippendorf's Alpha metric~\cite{Krippendorff2004ReliabilityIC}.
-Table~\ref{table:average-iaa} shows the average IAA which is satisfying around 0.9. 
+Table~\ref{table:average-iaa} shows the average IAA which is satisfying with a value of approximately 0.9. 
 The highest score is obtained in the \texttt{<material>} entities, while the lowest one is obtained in \texttt{<pressure>}, which appears less frequently in the papers. 
-The disagreement in \texttt{<tcValue>} can appear too low compared with other labels such as \texttt{<class>}, which is, at first look, more ambiguous. 
+The disagreement in \texttt{<tcValue>} can appear to be too low as compared with other labels such as \texttt{<class>}, which is, at first look, more ambiguous. 
 We analysed the different cases and identified three reasons why this happens. 
 First, \texttt{<tcValue>} may depend heavily on the context that requires more human attention, and it is therefore more prone to errors. 
-Second, our suggestions system is challenged in discriminating critical temperatures from other temperature data, leading to incorrect or invalid suggestions. 
-Finally, the presence of mathematical symbols (e.g. "\texttt{\~}", "\texttt{<}", and , "\texttt{>}") or other modifiers ("\texttt{up to}", "\texttt{exceeds}", etc.) before the \texttt{<tcValue>} could generate small disagreements that accumulate in the average score. 
+Second, our suggestions system is challenged in its ability to disambiguate critical temperatures from other temperature data, leading to incorrect or invalid suggestions. 
+Finally, the presence of mathematical symbols (e.g. "\texttt{\~}", "\texttt{<}", and "\texttt{>}") or other modifiers ("\texttt{up to}", "\texttt{exceeds}", etc.) before the \texttt{<tcValue>} could generate small disagreements that accumulate in the average score. 
 
-To more precisely isolate the impact of the guidelines, we grouped the IAA results by domain experience level. 
-Table~\ref{table:comparison-iaa-nde-de} displays the IAA between the validated data and the data corrected by (a) domain experts (researchers who conduct superconducting development experiments), (b) non-domain-experts (researchers with no experience with superconducting materials) and, (c) novices (students in materials science with limited domain experience). 
+To more precisely isolate the impact of the guidelines, we grouped the IAA results by level of domain experience. 
+Table~\ref{table:comparison-iaa-nde-de} displays the IAA between the validated data and the data corrected by (a) domain experts (researchers who conduct superconducting development experiments), (b) non-domain-experts (researchers with no experience with superconducting materials), and (c) novices (students in materials science with limited domain experience). 
 Obviously, the domain experts have the highest agreement and the IAA value (around 0.95) is 0.06 higher on average than that of non-domain experts. 
 Thus, superconducting materials is a complex domain that requires knowledge in materials science to produce high-quality data, while crowdsourcing initiatives such as the Amazon Mechanical Turk might not work well. 
 
-Furthermore, we measured the reliability of the guidelines by observing how quickly novices could reach a satisfying agreement with the domain experts validation, without any previous training on the guidelines.
-From Table~\ref{table:comparison-iaa-nde-de}, the  novices can reach high IAA by only use the guidelines and our annotation support tools. 
+Furthermore, we measured the reliability of the guidelines by observing how quickly novices could reach a satisfying agreement with the validation of the domain experts, without any previous training on the guidelines.
+From Table~\ref{table:comparison-iaa-nde-de}, the  novices can attain high IAA results by only using the guidelines and our annotation support tools. 
 The average difference in agreement with domain experts (around 0.05) indicates that the guidelines are precise and complete, and that the annotations tools offer sufficient support. 
 
 \section*{Usage Notes}
@@ -414,7 +415,7 @@ We computed the IAA using the Java library DkPro statistics (\url{https://dkpro.
 
 \section*{Acknowledgements}
 
-We would like to thank Tanifuji Mikiko for the continuous support, the enthusiasm and the openness on which she lead the Data PlatForm Data Center (DPFC, \url{https://www.nims.go.jp/eng/research/materials-data-pf/index.html}) at NIMS.
+We would like to thank Tanifuji Mikiko for her continuous support, as well as the enthusiasm and the openness with which she lead the Data PlatForm Data Center (DPFC, \url{https://www.nims.go.jp/eng/research/materials-data-pf/index.html}) at NIMS.
 Our warmest thanks to Patrice Lopez, the author of Grobid (\url{https://github.com/kermitt2/grobid}) and other TDM open-source projects. 
 
 \section*{Author contributions statement}
@@ -423,8 +424,8 @@ L.F. designed and developed the work (data preparation, annotation tools, IAA ex
 L.R. defined the standardised dataset TEI format.
 L.F. S.D. A.S. A.U. M.G.E.E. P.B.C. Y.M. S.I., and K.T. performed the dataset annotation and validation.
 M.G.E.E. P.B.C. Y.M. S.I. K.T., and Y.T. validated the corpus.
-L.F. wrote the manuscript with help in editing from S.D., M.I., K.T., P.B.C., Y.M., and  M.G.E.E.. 
-All authors reviewed and approved the manuscript. 
+L.F. wrote the manuscript with assistance in editing from S.D., M.I., K.T., P.B.C., Y.M., and  M.G.E.E.. 
+All authors reviewed and approved the final manuscript. 
 
 \section*{Competing interests} 
 
@@ -541,7 +542,7 @@ The authors declare no competing interests.
 \centering
   \centering
   \includegraphics[width=0.5\linewidth]{workflow-schema}
-  \caption{The annotation workflow. Different colours illustrate the involvement of each group at each step of the workflow.}
+  \caption{Annotation workflow. Different colours illustrate the involvement of each group at each step of the workflow.}
   \label{fig:schema-comparison-modified-workflow}
 \end{figure}
 
