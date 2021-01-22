@@ -1,8 +1,8 @@
-\documentclass[fleqn,10pt]{wlscirep}
-\usepackage[T1]{fontenc}
-\usepackage{lineno}
-\linenumbers
-% \documentclass[a4paper,10pt]{article}
+% \documentclass[fleqn,10pt]{wlscirep}
+% \usepackage[T1]{fontenc}
+% \usepackage{lineno}
+% \linenumbers
+\documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{authblk}
 \usepackage{tabularx}
@@ -37,7 +37,9 @@
 
 \affil[*]{corresponding authors: Luca Foppiano (FOPPIANO.Luca@nims.go.jp), Masashi Ishii (ISHII.Masashi@nims.go.jp)}
 
-
+\begin{document}
+\flushbottom
+\maketitle
 \begin{abstract}
 A growing number of papers are published in the area of superconducting materials science.
 However, novel text and data mining (TDM) processes are still needed to efficiently access and exploit this accumulated knowledge, paving the way towards data-driven materials design. 
@@ -47,9 +49,7 @@ The quality of the annotation guidelines was ensured by satisfactory Inter Annot
 SuperMat includes the dataset, annotation guidelines, and annotation support tools that use automatic suggestions to help minimise human errors.
 \end{abstract}
 
-\begin{document}
-\flushbottom
-\maketitle
+
 
 \section*{Background \& summary}
 The vast majority of scientific knowledge exists as published articles~\cite{Grigas2017JustGI, Khabsa2014TheNO, OrduaMalea2015MethodsFE, Bjrk2009ScientificJP}. 
@@ -411,6 +411,7 @@ The open source annotation tool is INCEpTION (\url{https://inception-project.git
 The content was acquired using biblio-glutton (\url{https://www.github.com/kermitt2/biblio-glutton}) and Grobid (\url{https://www.github.com/kermitt2/grobid}).
 We computed the IAA using the Java library DkPro statistics (\url{https://dkpro.github.io/dkpro-statistics/})~\cite{Meyer2014DKProAA}.
 
+\bibliographystyle{plain}
 \bibliography{references}  
 
 \section*{Acknowledgements}
