@@ -79,7 +79,7 @@ These databases would help researchers design new superconducting materials with
 However, the current resources are very limited and not dynamic enough to incorporate the information from new publications in a timely manner. 
 In this paper, we present SuperMat (Superconductors Materials), an annotated linked corpus for superconducting material information. 
 This dataset contains 142 documents with 16052 (7166 unique) entities, and 1398 links that can serve as an infrastructural data for TDM processes in the domain of superconducting materials. 
-SuperMat is different from SC-CoMIcs based on the following reasons: (a) it provides full papers instead of abstracts which contain more detailed information about the research on superconducting materials; (b) it contains linked entities, and (c) is publicly available. 
+SuperMat is different from SC-CoMIcs based on the following reasons: (a) it provides full papers instead of abstracts which contain more detailed information about the research on superconducting materials, and (b) it contains linked entities. 
 We also describe the construction guidelines for SuperMat, in the hope of supporting researchers to systematically create annotated data.
 Furthermore, the unique feature of links between entities in SuperMat will allow the development of more precise methodologies to associate a particular material with its properties.
 
@@ -90,12 +90,13 @@ Furthermore, the unique feature of links between entities in SuperMat will allow
 \subsection*{Content acquisition}
 SuperMat originates from PDF documents of scientific articles related to superconductor research. 
 The PDF format is the most widely used format for scientific publications \cite{johnson2018pdfStatistics}.
-The original documents were collected from the following sources: (a) the Open Access (OA) version of articles referenced in the SuperCon database records; 
+The original documents were collected from the following sources: (a) the Open Access (OA) version of peer-reviewed articles referenced in the SuperCon database records; 
 (b) articles provided by domain experts containing suitable items and potential links of material names, \textit{T\textsubscript{c}} values, measurement methods, and pressures; (c) articles from "condensed matter" category of arXiv (\url{https://arxiv.org/archive/cond-mat}) selected using the search terms of "superconductor", "critical temperature", and "superconductivity". 
 
-OA versions of articles were obtained using a lookup service for bibliographic data called biblio-glutton (\url{https://github.com/kermitt2/biblio-glutton}) that aggregates data from various sources: the Crossref (\url{https://www.crossref.org/}) bibliographic database, the unPaywall (\url{http://unpaywall.org}) service, the PubMed Central repository (\url{https://pubmed.ncbi.nlm.nih.gov/}), and mappings to other databases. 
-We queried \textit{biblio-glutton} using the bibliographic data of each article referenced in Supercon; subsequently, we downloaded the OA article associated with the retrieved record, if available. 
-A record in Unpaywall does not guarantee that the downloaded article could be reused to create derivative works. Therefore, for each article that was not downloaded from arXiv, we manually verified its reusability by checking for an explicit statement of the Creative Commons licence in the PDF document or at the original publisher's page. 
+Pre-print versions of peer-reviewed articles were obtained using a lookup service for bibliographic data called biblio-glutton (\url{https://github.com/kermitt2/biblio-glutton}) that aggregates data from various sources: the Crossref (\url{https://www.crossref.org/}) bibliographic database, the unPaywall (\url{http://unpaywall.org}) service, the PubMed Central repository (\url{https://pubmed.ncbi.nlm.nih.gov/}), and mappings to other databases. 
+We queried \textit{biblio-glutton} using the bibliographic data of each article referenced in Supercon; subsequently, we downloaded the pre-print article associated with the retrieved record, if available. 
+Although the published version may be different from the pre-print version of a document, the differences measured by comparing pre-print and peer-reviewed articles in biology~\cite{carneiro_comparing_2020} measured objective differences to be around 5\%.
+% A record in Unpaywall does not guarantee that the downloaded article could be reused to create derivative works. Therefore, for each article that was not downloaded from arXiv, we manually verified its reusability by checking for an explicit statement of the Creative Commons licence in the PDF document or at the original publisher's page. 
 
 \subsection*{Preliminary annotation study}
 \label{subsec:preliminary-annotation-study}
