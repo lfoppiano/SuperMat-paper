@@ -1,6 +1,6 @@
-# grobid-superconductors-data-paper
+# SuperMat: Construction of a linked annotated dataset fromsuperconductors-related publications
 
-Source of the article 
+To cite this article: 
 
 ```
 @unpublished{foppiano:hal-03101177,
