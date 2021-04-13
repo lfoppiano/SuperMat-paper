@@ -1,4 +1,4 @@
-# SuperMat: Construction of a linked annotated dataset fromsuperconductors-related publications
+# SuperMat: Construction of a linked annotated dataset from superconductors-related publications
 
 To cite this article: 
 
