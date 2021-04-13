@@ -116,7 +116,7 @@ The vast majority of scientific knowledge exists as published articles~\cite{Gri
 These publications are presented mainly as text, which is challenging to be used as a machine-readable structure. 
 Meanwhile, as a part of the text and data mining (TDM) discipline, computer-assisted information collection from the literature has become a supportive asset for scientific research~\cite{doi:10.1063/5.0021106}. 
 In the past decades, new TDM processes were developed for several natural science disciplines to achieve automatic document processing such as information retrieval, entity extraction, and clustering.  
-TDM has been applied in biology for identifing interactions between agents (e.g. bacteria, viruses, genes, and proteins)~\cite{10.1371/journal.pone.0004554, Krallinger2010, Krallinger2009ExtractionOH} to support the research on serious diseases including cancer~\cite{Krasnitz2019CancerB}. 
+TDM has been applied in biology for identifying interactions between agents (e.g. bacteria, viruses, genes, and proteins)~\cite{10.1371/journal.pone.0004554, Krallinger2010, Krallinger2009ExtractionOH} to support the research on serious diseases including cancer~\cite{Krasnitz2019CancerB}. 
 In chemistry, it was used for the disambiguation of chemical compounds names, synthesis extraction, and retrieval~\cite{Hawizy2011ChemicalTaggerAT}.
 In both domains, the application of TDM was based on manually curated datasets (corpora) that functioned as infrastructures. Examples are the BioCreative IV CHEMDNER corpus~\cite{Krallinger2015TheCC} in chemistry, and Genia~\cite{Kim2003GENIAC} and GENETAG~\cite{Tanabe2005GENETAGAT, Ohta2009IncorporatingGA} in biology. Such datasets are crucial for developing, training, and evaluating TDM systems.
 
@@ -135,7 +135,7 @@ These processes cannot be established without essential resources such as dictio
 % Superconductors domain
 Research on superconducting materials has been growing rapidly towards both fundamental science as well as practical applications. Superconductors display many intriguing phenomena including zero-resistivity, the ability to host a high magnetic field, quantisation of the magnetic flux, and vortex pinning.  
 Current applications of superconductors include medical instruments, high-speed trains, quantum computers, and the Linear Hadron Collider (LHC)~\cite{PhilippeBook, Kizu2010ConstructionOT, Cardani2017NewAO}. 
-However, discovering a new superconductor is a challenging task~\cite{PhysRevB.103.014509}. For example, in a previous work~\cite{doi:10.1088/1468-6996/16/3/033503} out of ~1000 studied materials, only 3\% were found to be superconducting. 
+However, discovering a new superconductor is a challenging task~\cite{PhysRevB.103.014509}. For example, in a previous work~\cite{doi:10.1088/1468-6996/16/3/033503} out of $\sim$1000 studied materials, only 3\% were found to be superconducting. 
 The National Institute for Materials Science (NIMS) in Japan has been manually constructing databases to support material research, and SuperCon (\url{http://supercon.nims.go.jp}) is a manually curated data source for the superconductor domain.
 These databases would help researchers design new superconducting materials with a higher superconducting critical temperature (\textit{T\textsubscript{c}}) (ideally up to room temperature)~\cite{Hamlin2019SuperconductivityNR,stanev2017machine}.
 However, the current resources are very limited and not dynamic enough to incorporate the information from new publications in a timely manner. 
@@ -157,7 +157,7 @@ The original documents were collected from the following sources: (a) the Open A
 Pre-print versions of peer-reviewed articles were obtained using a lookup service for bibliographic data called biblio-glutton (\url{https://github.com/kermitt2/biblio-glutton}) that aggregates data from various sources: the Crossref (\url{https://www.crossref.org/}) bibliographic database, the unPaywall (\url{http://unpaywall.org}) service, the PubMed Central repository (\url{https://pubmed.ncbi.nlm.nih.gov/}), and mappings to other databases. 
 We queried \textit{biblio-glutton} using the bibliographic data of each article referenced in Supercon; subsequently, we downloaded the pre-print article associated with the retrieved record, if available. 
 Although the published version may be different from the pre-print version of a document, the differences measured by comparing pre-print and peer-reviewed articles in biology~\cite{carneiro_comparing_2020} measured objective differences to be around 5\%.
-% A record in Unpaywall does not guarantee that the downloaded article could be reused to create derivative works. Therefore, for each article that was not downloaded from arXiv, we manually verified its reusability by checking for an explicit statement of the Creative Commons licence in the PDF document or at the original publisher's page. 
+
 
 \subsection{Preliminary annotation study}
 \label{subsec:preliminary-annotation-study}
@@ -398,11 +398,6 @@ SuperMat is constructed as a resource for TDM applications in superconducting ma
 (6) evaluation of rule-based or ML-based algorithms, and 
 (7) development of downstream processes, such as material name parser, or quantity normalisation.
 
-% \subsection{Reusability}
-% The data structure employed in this study (classes of materials, materials names, and related properties), is similar to that used in other domains in materials science. 
-% Therefore, SuperMat can be reused to facilitate or bootstrap the creation of new TDM processes in areas of materials research besides superconductors.
-% SuperMat could be used as a feature for a machine learning model for NER or EL systems in materials science such as magnetocaloric, piezoelectric, and thermoelectric domains.  
-
 \subsection{Practical applications}
 Such a dataset may benefit several types of possible applications: 
 
@@ -453,15 +448,6 @@ Furthermore, we measured the reliability of the guidelines by observing how quic
 From Table~\ref{table:comparison-iaa-nde-de}, the  novices can attain high IAA results by only using the guidelines and our annotation support tools. 
 The average difference in agreement with domain experts (around 0.05) indicates that the guidelines are precise and complete, and that the annotations tools offer sufficient support. 
 
-% \section{Usage Notes}
-% \label{sec:usage-notes}
-% SuperMat is provided as a set of XML files, whose format is described above. 
-% The dataset is maintained at the GitHub repository  \url{https://github.com/lfoppiano/SuperMat} and will be updated regularly. 
-% We will roll out a release on regular basis. 
-% Releases will be accessible at GitHub and at the National Institute for Materials Science (NIMS)'s Material Data Repository (MDR) platform \url{https://mdr.nims.go.jp/}, which permits DOIs to be automatically assigned to datasets.
-% The current repository includes 130 OA articles, and their respective bibliographic data as reference. 
-% The copyrighted articles will not be re-distributed due to their restrictive licenses.
-
 \section{Data Availability}
 \label{sec:code-availability}
 The references of the original papers and their bibliographical information, the annotation guidelines sources, and the developed code are available at the GitHub repository \url{https://github.com/lfoppiano/SuperMat}. The guidelines are freely accessible at \url{https://supermat.readthedocs.io}.
@@ -499,142 +485,15 @@ All authors reviewed and approved the final manuscript.
 
 The authors declare no competing interests.
 
-% \begin{thebibliography}{}
-% \bibitem{Grigas2017JustGI}
-% Grigas, Vincas, Simona Juzeniene, and Jone Velickaite. 2017. ‘“Just Google It” - the Scope of Freely Available Information Sources for Doctoral Thesis Writing’. Inf. Res. 22.
-
-% \bibitem{Khabsa2014TheNO}
-% Khabsa, Madian, and C. Lee Giles. 2014. ‘The Number of Scholarly Documents on the Public Web’. PLoS ONE 9.
-
-% \bibitem{OrduaMalea2015MethodsFE}
-% Orduña-Malea, Enrique, Juan Manuel Ayllon, Alberto Martín-Martín, and Emilio Delgado López-Cózar. 2015. ‘Methods for Estimating the Size of Google Scholar’. Scientometrics 104: 931–49.
-
-% \bibitem{Bjrk2009ScientificJP}
-% Björk, Bo-Christer, Annikki Roos, and Mari Lauri. 2009. ‘Scientific Journal Publishing: Yearly Volume and Open Access Availability’. Inf. Res. 14.
-
-% \bibitem{doi:10.1063/5.0021106}
-% Olivetti, Elsa A., Jacqueline M. Cole, Edward Kim, Olga Kononova, Gerbrand Ceder, Thomas Yong-Jin Han, and Anna M. Hiszpanski. 2020. ‘Data-Driven Materials Research Enabled by Natural Language Processing and Information Extraction’. Applied Physics Reviews 7 (4): 041317. https://doi.org/10.1063/5.0021106.
-
-% \bibitem{10.1371/journal.pone.0004554}
-% He, Min, Yi Wang, and Wei Li. 2009. ‘PPI Finder: A Mining Tool for Human Protein-Protein Interactions’. PLOS ONE 4 (2): 1–6. https://doi.org/10.1371/journal.pone.0004554.
-
-% \bibitem{Krallinger2010}
-% Krallinger, Martin, Florian Leitner, and Alfonso Valencia. 2010. ‘Analysis of Biological Processes and Diseases Using Text Mining Approaches’. In Bioinformatics Methods in Clinical Research, 341–82. Totowa, NJ: Humana Press. https://doi.org/10.1007/978-1-60327-194-3\_16.
-
-% \bibitem{Krallinger2009ExtractionOH}
-% Krallinger, Martin, José M. G. Izarzugaza, Carlos Rodríguez Penagos, and Alfonso Valencia. 2009. ‘Extraction of Human Kinase Mutations from Literature, Databases and Genotyping Studies’. BMC Bioinformatics 10: S1–S1.
-
-% \bibitem{Krasnitz2019CancerB}
-% Krasnitz, Alexander. 2019. ‘Cancer Bioinformatics’. In Methods in Molecular Biology.
-
-% \bibitem{Hawizy2011ChemicalTaggerAT}
-% Hawizy, Lezan, David M. Jessop, Nico Adams, and Peter Murray-Rust. 2011. ‘ChemicalTagger: A Tool for Semantic Text-Mining in Chemistry’. Journal of Cheminformatics 3: 17–17.
-
-% \bibitem{Krallinger2015TheCC}
-% Krallinger, Martin, Obdulia Rabal, Florian Leitner, Miguel Vazquez, David Salgado, Zhiyong Lu, Robert Leaman, et al. 2015. ‘The CHEMDNER Corpus of Chemicals and Drugs and Its Annotation Principles’. Journal of Cheminformatics 7: S2–S2.
-
-% \bibitem{Kim2003GENIAC}
-% Kim, Jin-Dong, Tomoko Ohta, Yuka Tateisi, and Jun’ichi Tsujii. 2003. ‘GENIA Corpus - a Semantically Annotated Corpus for Bio-Textmining’. Bioinformatics 19 Suppl 1: i180-2.
-
-% \bibitem{Tanabe2005GENETAGAT}
-% Tanabe, Lorraine K., Natalie Xie, Lynne H. Thom, Wayne Matten, and W. John Wilbur. 2005. ‘GENETAG: A Tagged Corpus for Gene/Protein Named Entity Recognition’. BMC Bioinformatics 6: S3–S3.
-
-% \bibitem{Ohta2009IncorporatingGA}
-% Ohta, Tomoko, Jin-Dong Kim, Sampo Pyysalo, Yue Wang, and Jun’ichi Tsujii. 2009. ‘Incorporating GENETAG-Style Annotation to GENIA Corpus’. In BioNLP@HLT-NAACL.
-
-% \bibitem{Dieb2016}
-% Dieb, Thaer M., Masaharu Yoshioka, and Shinjiro Hara. 2016. ‘NaDev: An Annotated Corpus to Support Information Extraction from Research Papers on Nanocrystal Devices’. Journal of Information Processing 24 (January): 554–64. https://doi.org/10.2197/ipsjjip.24.554.
-
-% \bibitem{yamaguchi-etal-2020-sc}
-% Yamaguchi, Kyosuke, Ryoji Asahi, and Yutaka Sasaki. 2020. ‘SC-CoMIcs: A Superconductivity Corpus for Materials Informatics’. In Proceedings of the 12th Language Resources and Evaluation Conference, 6753–60. Marseille, France: European Language Resources Association. https://www.aclweb.org/anthology/2020.lrec-1.834.
-
-% \bibitem{kononova_text-mined_2019}
-% Kononova, Olga, Haoyan Huo, Tanjin He, Ziqin Rong, Tiago Botari, Wenhao Sun, Vahe Tshitoyan, and Gerbrand Ceder. 2019a. ‘Text-Mined Dataset of Inorganic Materials Synthesis Recipes’. Scientific Data 6 (1): 203. https://doi.org/10.1038/s41597-019-0224-1.
-
-% \bibitem{doi:10.1021/cm400893e}
-% Gaultois, Michael W., Taylor D. Sparks, Christopher K. H. Borg, Ram Seshadri, William D. Bonificio, and David R. Clarke. 2013. ‘Data-Driven Review of Thermoelectric Materials: Performance and Resource Considerations’. Chemistry of Materials 25 (15): 2911–20. https://doi.org/10.1021/cm400893e.
-
-% \bibitem{Jain2013CommentaryTM_materialsProject}
-% Jain, Anubhav, Shyue Ping Ong, Geoffroy Hautier, Wei Chen, William Davidson Richards, Stephen Dacek, Shreyas Cholia, et al. 2013. ‘The Materials Project: A Materials Genome Approach to Accelerating Materials Innovation’. APL Materials 1 (1): 011002. https://doi.org/10.1063/1.4812323.
-
-% \bibitem{Hill2016MaterialsSW}
-% Hill, J., Gregory J. Mulholland, K. Persson, R. Seshadri, C. Wolverton, and B. Meredig. 2016. ‘Materials Science with Large-Scale Data and Informatics: Unlocking New Opportunities’. Mrs Bulletin 41: 399–409.
-
-% \bibitem{Liu2019SurfaceMR}
-% Liu, Huaping, Feng Wang, Fuchun Sun, and Bin Fang. 2019. ‘Surface Material Retrieval Using Weakly Paired Cross-Modal Learning’. IEEE Transactions on Automation Science and Engineering 16: 781–91.
-
-% \bibitem{PhilippeBook}
-% Mangin, Philippe, and Rémi Kahn. 2016. Superconductivity: An Introduction. Springer. https://doi.org/10.1007/978-3-319-50527-5.
-
-% \bibitem{Kizu2010ConstructionOT}
-% Kizu, Kaname, Katsuhiko Tsuchiya, Yozo Kashiwa, Haruyuki Murakami, and Kôichi Yoshida. 2010. ‘Construction of the Jacketing Facility and First Production Results of Superconductor for JT-60SA’. IEEE Transactions on Applied Superconductivity 20: 538–42.
-
-% \bibitem{Cardani2017NewAO}
-% Cardani, Laura, Francesco Bellini, Nicola Casali, et al. 2017. ‘New Application of Superconductors: High Sensitivity Cryogenic Light Detectors’. Nuclear Instruments \& Methods in Physics Research Section A-Accelerators Spectrometers Detectors and Associated Equipment 845: 338–41.
-
-% \bibitem{Konno2018DeepLO}
-% Konno, Tomohiko, H. Kurokawa, F. Nabeshima, Y. Sakishita, Ryo Ogawa, I. Hosako, and A. Maeda. 2018. ‘Deep Learning Model for Finding New Superconductors’. ArXiv abs/1812.01995.
-
-% \bibitem{Hamlin2019SuperconductivityNR}
-% Hamlin, James J. 2019. ‘Superconductivity near Room Temperature’. Nature 569: 491–92.
-
-% \bibitem{stanev2017machine}
-% Stanev, Valentin, Corey Oses, A. Kusne, Efrain Rodriguez, Johnpierre Paglione, Stefano Curtarolo, and I. Takeuchi. 2017. ‘Machine Learning Modeling of Superconducting Critical Temperature’. Npj Computational Materials 4. https://doi.org/10.1038/s41524-018-0085-8.
-
-% \bibitem{johnson2018pdfStatistics}
-% Johnson, Duff. 2018. PDF Statistics – the Universe of Electronic Documents. THE INSTITUTE OF ELECTRONICS, INFORMATION AND COMMUNICATION ENGINEERS.
-
-% \bibitem{carneiro_comparing_2020}
-% Carneiro, Clarissa F. D., Victor G. S. Queiroz, Thiago C. Moulin, Carlos A. M. Carvalho, Clarissa B. Haas, Danielle Rayêe, David E. Henshall, et al. 2020a. ‘Comparing Quality of Reporting between Preprints and Peer-Reviewed Articles in the Biomedical Literature’. Research Integrity and Peer Review 5 (1): 16. https://doi.org/10.1186/s41073-020-00101-3.
-
-% \bibitem{Krippendorff2004ReliabilityIC}
-% Krippendorff, Klaus. 2006. ‘Reliability in Content Analysis: Some Common Misconceptions and Recommendations’. Human Communication Research 30 (3): 411–33. https://doi.org/10.1111/j.1468-2958.2004.tb00738.x.
-
-% \bibitem{Zapf2016MeasuringIR}
-% Zapf, Antonia, Stefanie Castell, Lars Morawietz, and André Karch. 2016. ‘Measuring Inter-Rater Reliability for Nominal Data – Which Coefficients and Confidence Intervals Are Appropriate?’ BMC Medical Research Methodology 16 (1): 93. https://doi.org/10.1186/s12874-016-0200-9.
-
-% \bibitem{tubiblio106270}
-% Klie, Jan-Christoph, Michael Bugert, Beto Boullosa, Richard Eckart de Castilho, and Iryna Gurevych. 2018. ‘The INCEpTION Platform: Machine-Assisted and Knowledge-Oriented Interactive Annotation’. In Proceedings of the 27th International Conference on Computational Linguistics: System Demonstrations, 5–9. Association for Computational Linguistics. http://tubiblio.ulb.tu-darmstadt.de/106270/.
-
-% \bibitem{eckart-de-castilho-etal-2016-web}
-% Eckart de Castilho, Richard, Éva Mújdricza-Maydt, Seid Muhie Yimam, Silvana Hartmann, Iryna Gurevych, Anette Frank, and Chris Biemann. 2016. ‘A Web-Based Tool for the Integrated Annotation of Semantic and Syntactic Structures’. In Proceedings of the Workshop on Language Technology Resources and Tools for Digital Humanities (LT4DH), 76–84. Osaka, Japan: The COLING 2016 Organizing Committee. https://www.aclweb.org/anthology/W16-4011.
-
-% \bibitem{Fort2010InfluenceOP}
-% Fort, Karën, and Benoît Sagot. 2010. ‘Influence of Pre-Annotation on POS-Tagged Corpus Development’. In Proceedings of the Fourth Linguistic Annotation Workshop, 56–63. Uppsala, Sweden: Association for Computational Linguistics. https://www.aclweb.org/anthology/W10-1807.
-
-% \bibitem{Nvol2011SemiautomaticSA}
-% Névéol, Aurélie, Rezarta Islamaj Dogan, and Zhiyong Lu. 2011. ‘Semi-Automatic Semantic Annotation of PubMed Queries: A Study on Quality, Efficiency, Satisfaction’. Journal of Biomedical Informatics 44 2: 310–18.
-
-% \bibitem{Lingren2014EvaluatingTI}
-% Lingren, Todd, Louise Deleger, Katalin Molnar, Haijun Zhai, Jareen Meinzen-Derr, Megan Kaiser, Laura Stoutenborough, Qi Li, and Imre Solti. 2014. ‘Evaluating the Impact of Pre-Annotation on Annotation Speed and Potential Bias: Natural Language Processing Gold Standard Development for Clinical Named Entity Recognition in Clinical Trial Announcements’. Journal of the American Medical Informatics Association: JAMIA 21 (3): 406–13. https://doi.org/10.1136/amiajnl-2013-001837.
-
-% \bibitem{foppiano2019proposal}
-% Foppiano, Luca, Thaer M. Dieb, Akira Suzuki, and Ishii Masashi. 2019. ‘Proposal for Automatic Extraction Framework of Superconductors Related Information from Scientific Literature’. THE INSTITUTE OF ELECTRONICS, INFORMATION AND COMMUNICATION ENGINEERS.
-
-% \bibitem{pustejovsky2012natural}
-% Pustejovsky, James, and Amber Stubbs. 2012. Natural Language Annotation for Machine Learning: A Guide to Corpus-Building for Applications.  O’Reilly Media, Inc.
-
-% \bibitem{Meyer2014DKProAA}
-% Meyer, Christian M., Margot Mieskes, Christian Stab, and Iryna Gurevych. 2014. ‘DKPro Agreement: An Open-Source Java Library for Measuring Inter-Rater Agreement’. In Proceedings of COLING 2014, the 25th International Conference on Computational Linguistics: System Demonstrations, 105–9. Dublin, Ireland: Dublin City University and Association for Computational Linguistics. https://www.aclweb.org/anthology/C14-2023.
-
-% \bibitem{Kotegawa2009ContrastingPE}
-% Kotegawa, H., T. Kawazoe, H. Tou, K. Murata, H. Ogino, K. Kishio, and J. Shimoyama. 2009. ‘Contrasting Pressure Effects in Sr2VFeAsO3 and Sr2ScFePO3’. ArXiv: Superconductivity.
-
-% \bibitem{Yonezawa2004NewO}
-% Yonezawa, Shigeki, Y. Muraoka, and Z. Hiroi. 2004. ‘New SS-Pyrochlore Oxide Superconductor CsOs2O6’. Journal of the Physical Society of Japan 73: 1655–56.
-
-
-% \end{thebibliography}{}
-
-
 \bibliographystyle{tfnlm}
 \bibliography{references}  
 
 \section*{Figures \& Tables}
 
+% example-annotated-corpus-postprocess.png
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\linewidth]{example-annotated-corpus-postprocess.png}
+  \includegraphics[width=\linewidth]{Fig1.png}
   \caption{Example in the annotated corpus. The excerpt was taken from~\cite{Kotegawa2009ContrastingPE}.}
   \label{fig:example-annotations-and-links}
 \end{figure}
@@ -710,18 +569,14 @@ The authors declare no competing interests.
     \label{table:dataset-inconsistencies-clear}
 \end{table}
 
-
+% workflow-schema
 \begin{figure}[htb]
 \centering
   \centering
-  \includegraphics[width=0.5\linewidth]{workflow-schema}
+  \includegraphics[width=0.5\linewidth]{Fig2.png}
   \caption{Annotation workflow. Different colours illustrate the involvement of each group at each step of the workflow.}
   \label{fig:schema-comparison-modified-workflow}
 \end{figure}
-
-
-
-
 
 
 \begin{table}[ht]
@@ -747,7 +602,7 @@ The authors declare no competing interests.
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\linewidth]{data-transformation.png}
+    \includegraphics[width=\linewidth]{Fig3.png}
     \caption{Summary of the data transformation flows.}
     \label{fig:data-transformation}
 \end{figure}
@@ -755,11 +610,11 @@ The authors declare no competing interests.
 
 \begin{figure}[ht]
 \centering
-\subfloat[Papers distribution by Licence: Open Access vs copyrighted.]{\resizebox*{4cm}{!}{\includegraphics{papers-by-sources.png}}\label{fig:arxiv-rate}}
+\subfloat[Papers distribution by Licence: Open Access vs copyrighted.]{\resizebox*{4cm}{!}{\includegraphics{Fig4.png}}\label{fig:arxiv-rate}}
 \hspace{5pt} 
-\subfloat[Distribution by publisher.]{\resizebox*{4cm}{!}{\includegraphics{papers-by-publishers.png}}\label{fig:distribution-by-publisher}} 
+\subfloat[Distribution by publisher.]{\resizebox*{4cm}{!}{\includegraphics{Fig5.png}}\label{fig:distribution-by-publisher}} 
 \hspace{5pt} 
-\subfloat[Distribution by year of publication.]{\resizebox*{4cm}{!}{\includegraphics{papers-by-years.png}}\label{fig:distribution-by-year}} 
+\subfloat[Distribution by year of publication.]{\resizebox*{4cm}{!}{\includegraphics{Fig6.png}}\label{fig:distribution-by-year}} 
 \caption{Distribution of paper in the dataset by (a) license, (b) publisher, and (c) year of publication.} 
 \label{fig:dataset-distributions}
 \end{figure}
@@ -785,21 +640,13 @@ The authors declare no competing interests.
     \label{table:average-iaa}
 \end{table}
 
-
-
-
+% inception-curation-new.png
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\linewidth]{inception-curation-new.png}
+    \includegraphics[width=\linewidth]{Fig7.png}
     \caption{INCEpTION curation interface. The example is taken from~\cite{Yonezawa2004NewO}.}
     \label{fig:inception-curation-interface}
 \end{figure}
-
-
-
-
-
-
 
 
 \begin{table}[ht]
@@ -823,164 +670,5 @@ The authors declare no competing interests.
    
     \label{table:comparison-iaa-nde-de}
 \end{table}
-
-
-
-% \begin{table}[ht]
-%     \centering
-%     \begin{tabular}{ | c | c| c| } 
-%     \hline
-%         \textbf{Iteration} \# & \textbf{IAA} & \textbf{IAA by label}  \\ [0.5ex] 
-%     \hline
-%         1  & 0.45
-%         &\begin{tabular}{  c | c  } 
-%             \texttt{<material>} & 0.45\\ 
-%             \texttt{<tc>} & 0.56\\
-%             \texttt{<tcValue>} & 0.50\\
-%             \texttt{<doping>} & 0.21\\
-%         \end{tabular}    
-%         \\ 
-%     \hline
-%         2 & 0.65
-%         &\begin{tabular}{  c |  c  } 
-%             \texttt{<material>} & 0.75\\ 
-%             \texttt{<tc>} & 0.85\\
-%             \texttt{<tcValue>} & 0.85\\
-%             \texttt{<doping>} & 0.39 \\
-%         \end{tabular}          
-%         \\ 
-%     \hline
-%         3 & 0.89
-%         & \begin{tabular}{  c | c  } 
-%             \texttt{<material>} & 0.89\\ 
-%             \texttt{<tc>} & 0.91\\
-%             \texttt{<tcValue>} & 0.88\\
-%             \texttt{<doping>} & 0.94\\
-%         \end{tabular}       
-%         \\ 
-%     \hline
-%     \end{tabular}
-%     \caption{Summary of the IAA for each annotation iteration.}
-%     \label{table:summary-preliminary-annotation}
-% \end{table}
-
-
-% \begin{table}[ht]
-%     \centering
-%     \begin{tabular}{ | c | c | c | c | c | } 
-%     \hline
-%         \textbf{Text} & \textbf{Label 1} & \textbf{\#} & \textbf{Label 2} & \textbf{\#}\\
-%     \hline
-%         \texttt{LiFeAs}         &   \texttt{<material>}   &    89   &   \texttt{<class>}  &   1   \\
-%         \texttt{Bi-2212}        &	\texttt{<material>}   &    34   &   \texttt{<class>}  &   1   \\
-%         \texttt{cobalt oxide}   &   \texttt{<material>}   &    89   &   \texttt{<class>}  &   1   \\
-%         \texttt{RE-123}         &	\texttt{<material>}   &    34   &   \texttt{<class>}  &   1   \\
-%     \hline
-%     \end{tabular}
-%     \caption{Inconsistencies resulting from human mistakes.}
-%     \label{table:dataset-inconsistencies-clear}
-% \end{table}
-
-% \begin{table}[ht]
-%     \centering
-%     \begin{tabular}{ | c | c | c | c | c | } 
-%     \hline
-%         \textbf{Text} & \textbf{Label 1} & \textbf{\#} & \textbf{Label 2} & \textbf{\#}\\
-%     \hline
-%         \texttt{superconducting transition}     &   \texttt{<material>}   &    1   &   \texttt{<tc>}  &   61   \\
-%         \texttt{NCCO}    &	\texttt{<material>}   &    14   &   \texttt{<tc>}  &   1   \\
-%         \texttt{superconducting transition temperatures}     &   \texttt{<material>}   &    1   &   \texttt{<tc>}  &   11   \\
-%         \texttt{occurrence of superconductivity}    &	\texttt{<material>}   &    1   &   \texttt{<tc>}  &   1   \\
-%     \hline
-%     \end{tabular}
-%     \caption{Inconsistencies resulting from the overlapping of \texttt{<material>} and \texttt{<class>} labels.}
-%     \label{table:dataset-inconsistencies-unclear}
-% \end{table}
-
-
-% \begin{figure}[ht]
-% \begin{subfigure}{0.3\textwidth}
-%      \centering
-%     \includegraphics[width=\linewidth]{papers-by-sources.png}
-%     \captionof{figure}{Papers distribution by Licence: Open Access (CC-BY) vs copyrighted.}
-%     \label{fig:arxiv-rate}
-% \end{subfigure}
-% \begin{subfigure}{0.4\textwidth}
-%      \centering
-%     \includegraphics[width=\linewidth]{papers-by-publishers.png}
-%     \captionof{figure}{Distribution by publisher.}
-%     \label{fig:distribution-by-publisher}
-% \end{subfigure}
-% \begin{subfigure}{0.3\textwidth}
-% \centering
-%     \includegraphics[width=\linewidth]{papers-by-years.png}
-%     \captionof{figure}{Distribution by year of publication.}
-%     \label{fig:distribution-by-year}
-% \end{subfigure}
-% \caption{Distribution of paper in the dataset by (a) license, (b) publisher, and (c) year of publication.}
-% \label{fig:dataset-distributions}
-% \end{figure}
-
-% \begin{table}[ht]
-%     \centering
-%     \begin{tabular}{ |m{6em}  | m{4em} | m{6em} | m{7em} | m{6em} |} 
-%     \hline
-%         \multirow{2}{5em}{\textbf{Documents}} & \textbf{Files} & \textbf{Paragraphs} &	\textbf{Sentences} & \textbf{Tokens}\\
-%          & 142  &	2800 & 	18344 & 	1118432\\
-%     \hline\hline
-%         \multirow{2}{5em}{\textbf{Entities}} & \textbf{Entities} &  \multicolumn{2}{|c|}{\textbf{Unique entities}} &  \textbf{ Labels} \\
-%         & 16040 &  \multicolumn{2}{|c|}{7151} &  6 \\
-%     \hline\hline
-%         \multirow{2}{5em}{\textbf{Links}} & \textbf{Links} & \multicolumn{2}{|c|}{\textbf{Links\textsubscript{ip}}} 
-%         & \textbf{Links\textsubscript{ep}}\\
-%         & 1399  & \multicolumn{2}{|c|}{1286} &	113	\\
-%     \hline
-%     \end{tabular}
-%     \caption{Statistical overview of the dataset. 
-%     Links\textsubscript{ip} indicates the number of links within the same paragraph (intra-paragraph). Links\textsubscript{ep} indicate the number of links from different paragraphs  (extra-paragraphs).  }
-%     \label{table:summary-content}
-% \end{table}
-
-% \begin{table}[ht]
-%     \centering
-%     \begin{tabular}{ | c | c | } 
-%     \hline
-%         \textbf{Label} & \textbf{Average}\\
-%     \hline
-%         \texttt{<material>}     &   0.956   \\
-%         \texttt{<me\_method>}   &	0.887   \\
-%         \texttt{<pressure>}     &	0.723   \\
-%         \texttt{<class>}        &	0.925   \\
-%         \texttt{<tcValue>}      &	0.863   \\
-%         \texttt{<tc>}           &	0.831   \\
-%     \hline
-%         \textbf{Micro average}        &	0.911	\\
-%     \hline
-%     \end{tabular}
-%     \caption{Average IAA between the annotated and validated documents}
-%     \label{table:average-iaa}
-% \end{table}
-
-% \begin{table}[ht]
-%     \centering
-%     \begin{tabular}{ | c | c | c | c | c | } 
-%     \hline
-%         \textbf{Label} & \textbf{Domain experts} & \textbf{Non-domain experts} & \textbf{Novices}\\
-%     \hline
-%         \texttt{<material>}     &   0.969   & 0.950    &   0.924   \\
-%         \texttt{<me\_method>}   &   0.890   & 0.862    &   0.901   \\
-%         \texttt{<pressure>}     &   0.836   & 0.741    &   0.746   \\
-%         \texttt{<class>}        &   0.990   & 0.836	   &   0.899   \\
-%         \texttt{<tcValue>}      &   0.895   & 0.734	   &   0.841   \\
-%         \texttt{<tc>}           &   0.874   & 0.776	   &   0.830   \\
-%     \hline
-%         \textbf{All labels}        &	0.940   &   0.882	&      0.896   \\
-%     \hline
-%         \textbf{\# paragraphs}  &   1066   &  1648	    &   325     \\
-%     \hline
-%     \end{tabular}
-%     \caption{Calculated IAA for annotations produced by domain experts, non-domain experts, and novices compared to the validated version. Annotations from domain experts are cross validated. }
-%     \label{table:comparison-iaa-nde-de}
-% \end{table}
 
 \end{document}
